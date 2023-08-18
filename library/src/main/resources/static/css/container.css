@@ -1,0 +1,230 @@
+/*로그인 화면*/
+.loginContainer{display: flex; margin-top: 225px !important;  margin-top: 165px !important;}
+h1{margin-bottom:50px;}
+.checked{font-weight: 600;}
+
+.loginContent{padding:50px 0 0 50px; width:1000px;}
+
+.contentBox{display: flex; }
+.loginImgBox { width : 180px; margin-right:50px;}
+.loginImgBox  > img { width:100%; padding-top: 35px; padding-left: 10px;}
+.loginFormContainer{width:405px;}
+
+.loginContainer label{display:inline-block; width:80px; margin-bottom:15px;}
+#id, #pw{width:230px; }
+.loginForm{display: flex;}
+.loginButton{background-color: skyblue; width:80px; 
+color:white; border-color: transparent; font-size: 17px;}
+
+.loginFormContainer .saveIdBox{margin-top: 15px;}
+.loginFormContainer .saveIdBox label{margin:0;}
+.kakao{width: 100%; height:55px; display : flex; justify-content: center;align-items: center;
+background: #FEE500; border-radius: 5px;margin-top: 10px; cursor: pointer;}
+.kakao a{display: inline-block; width: 100%; text-align: center;}
+
+.bottomButtonBox{display:flex;justify-content: space-between;}
+.registerButton, .findButton{
+border-color: transparent; margin-top:10px; height:50px; font-size:15px; cursor: pointer;}
+.registerButton{ padding: 0 65px 0 65px; margin-right:10px; }
+.findButton{padding:0 30px 0 30px;}
+
+
+
+/*회원가입 화면*/
+.registerContainer{display:flex; margin-top: 225px !important;  margin-top: 165px !important;}
+.register{margin-bottom:20px;}
+.register > div {line-height:145%; margin-bottom:30px;}
+
+/*회원가입 화면 - 동그라미(ex. 회원가입 화면의 회원유형)*/
+.regProcess{height:120px; line-height:120px; text-align:center; vertical-align: middle; font-size:0;}
+.regProcess p{display:inline-block; font-size:30px; margin: 0 10px;}
+.regProcess span{
+	display:inline-block;
+	border : 1px solid #bbb;
+	width:100px;
+	height:100px;
+	font-size:17px;
+	font-weight:300;
+	text-align:center;
+	line-height:100px;
+	border-radius:80px;
+	-webkit-border-radius:80px;
+	-moz-border-radius:80px;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;}
+.regProcess span.active{background-color:#338cfa; color:#fff;}
+	
+/*회원가입 연령별*/
+.age {overflow:hidden; width:100%; text-align:center;}
+.age_adult, .age_child{position:relative; width:43%; height:300px; border:1px solid #bbb; padding:10px;}
+.age_adult > div a, .age_child > div a{display:block;}
+
+.age_adult{float:left; margin-right:15px;}
+.age_adult p {margin:10px 0;}
+.age_adult > div{width:188px; height:40px; line-height:40px; border:1px solid #bbb; position:absolute; left:27%;}
+
+.age_child{float:right;}
+.age_child p {margin:10px 0;}
+.age_child > div{width:188px; height:40px; line-height:40px; border:1px solid #bbb; position:absolute; left:27%;}
+
+/*회원가입 - 동의화면*/
+.form {display:flex; flex-direction: column}
+.agreement {border:1px solid #bbb; margin:20px 0; padding:10px; line-height: 140%;}
+.checks{position:relative; text-align:right;}
+.checks input[type="checkbox"]{
+    /*실제 체크박스 숨기기*/
+    position:absolute;
+    width:1px;
+	height:1px;
+	padding:0;
+	margin:-1px;
+	overflow:hidden;
+	border:0;
+	clip:rect(0,0,0,0);/*x,y,z값-이미지의 일부만 보이게 하는 태그*/
+}
+
+.checks label{font-size:16px; line-height:20px; margin-bottom:30px;}
+.checks label strong {color:#ea226b;}
+
+.checks input[type="checkbox"] + label{
+	width:auto;
+    display:inline-block;
+	position:relative;
+	text-align:right;
+	cursor:pointer;
+	user-select:none;/*브라우저에서 드래그나 더블 클릭으로 텍스트 선택 불가*/
+}
+.checks input[type="checkbox"] + label:before{
+    content:"";
+	display:inline-block;
+	width:20px; /*체크박스크기*/
+	height:20px;
+	line-height:20px;
+	text-align:center;
+	vertical-align:middle;
+    background:#fafafa;
+	border:1px solid #ededed;
+	border-radius:3px;
+	margin:-2px 8px 0 0;
+    box-shadow:0 1px 2px rgba(0,0,0,0.05), inset 0 -15px 10px -12px rgba(0,0,0,0.05);
+	/*inset 요소 안쪽 그림자*/
+}
+
+.checks.noline input[type="checkbox"] + label{
+	    padding-left:30px;
+	}
+	
+.checks.noline input[type="checkbox"] + label:before{
+    position:absolute;
+	left:0;
+	top:0;
+	margin-top:0;
+	opacity:0.6;
+	box-shadow:0;
+	border-color:#ea226b;
+	transition:all 0.12s, border-color 0.05s;
+}
+.checks.noline input[type="checkbox"]:checked + label:before{
+    position:absolute;
+	content:"";
+	width:10px;
+	left:5px;
+	top:-5px;
+	border-radius:0;
+	opacity:1;
+	background:transparent;
+	border-color:transparent #ea226b #ea226b transparent;
+	border-top-color:transparent;
+	border-left-color:transparent;
+	transform:rotate(45deg);
+}
+
+.form .reg_button {text-align:center;}
+.form .reg_button input[type="submit"]{width:150px; height:50px; margin-right:50px; font-size:17px; cursor:pointer; background-color: #ddd; border:1px solid #bbb; border-radius: 5px; -webkit-border-radius:5px; -moz-border-radius:5px;}
+.form .reg_button input[type="button"]{width:150px; height:50px; font-size:17px; cursor:pointer; background-color: #ddd; border:1px solid #bbb; border-radius: 5px; -webkit-border-radius:5px; -moz-border-radius:5px;}
+
+.form .reg_button input[type="submit"]:hover {background-color: #338cfa; color:#fff;}
+.form .reg_button input[type="button"]:hover {background-color: #338cfa; color:#fff;}
+
+/*회원가입 - 본인확인*/
+.auth {overflow:hidden; width:100%; text-align:center;}
+.auth_mobile, .auth_email{position:relative; width:43%; height:300px; border:1px solid #bbb; padding:10px;}
+.auth_mobile > div a, auth_email > div a{display:block;}
+
+.auth_mobile{float:left; margin-right:15px; text-align:center;}
+.auth_mobile p {margin:20px 0;}
+.auth_mobile > div{width:188px; height:40px; line-height:40px; border:1px solid #bbb; position:absolute; left:27%;}
+
+.auth_email{float:right; width:422px;}
+.auth_email p {margin:20px 0;}
+.auth_email > div{width:188px; height:40px; line-height:40px; border:1px solid #bbb; position:absolute; left:27%;}
+.auth_email label{width:100%;}
+.auth_email input[type="text"]{width:405px;}
+.auth_email input[type="button"]{width:405px; margin-left:10px;}
+
+/*회원가입 - 정보입력*/
+.RIContainer{
+	width: 700px; 
+	margin:50px auto; padding: 50px 0 50px 100px;
+	background-color:#F5F6F7;}
+.RIContainer .logo{width: 240px; margin:0 auto 20px auto;}
+.RIContainer input{margin: 10px 0 10px; }
+.RIContainer label{display:inline-block; width:90px; margin-bottom:15px;}
+
+.RIContainer .caution{color:red; font-size: 16px;}
+.RIContainer .essential{font-weight: 400; }
+.RIContainer .alert{color:blue;}
+
+.RIContainer button, #postcodeBtn, #authBtn{padding:12px; cursor: pointer;}
+.RIContainer .SMSBtn, .loginButton, .saveId{cursor: pointer;}
+
+.RIContainer #id, .RIContainer #pw, #confirm, #name, #mobile, 
+#proName, #birth, #postcode, #email, 
+#nameLabel, #emailLabel {width: 300px;}
+
+#idCheckLabel{margin-bottom: 5px;}
+
+#idCondition, #passwordCondition{display:inline-block; margin-bottom: 7px;}
+
+#address, #detailAddress{width: 450px; margin-left:94px;}
+.RIContainer .registerBtn, .RIContainer .cancelBtn{width:175px; height:60px; padding:10px; cursor: pointer;}
+.RIContainer .registerBtn{margin-right: 20px;}
+.RIContainer input::placeholder{font-size: 15px;}
+
+.daterangepicker .drp-buttons .btn {
+    width: 60px;
+    cursor: pointer;
+}
+.daterangepicker .drp-buttons .applyBtn{
+	background-color: #338CFA;
+	color: white;
+}
+
+/* 아이디/비밀번호 찾기 */
+.find {overflow:hidden; width:100%; height:40px; border:1px solid #ddd; margin-bottom:20px; text-align:center;}
+
+.find a{display:block;}
+
+.find .findId {float:left; width:50%; height:40px; border-right:1px solid #ddd; line-height:40px; box-sizing: border-box; -webkit-box-sizing:border-box; -moz-box-sizing: border-box;}
+.find .findPw {float:right; width:50%; line-height:40px; margin-left:0; box-sizing: border-box; -webkit-box-sizing:border-box; -moz-box-sizing: border-box;}
+
+.find .findId a, .find .findPw a {font-weight:800px; display:block;}
+
+.info .changePw table tr td {padding:10px;}
+.info .changePw table tr td input[type="password"]{width:200px; height:30px;}
+.info .changePw table tr td input[type="text"]{width:200px; height:30px;}
+.info .changePw table tr td input[type="button"]{width:60px; height:30px; font-size:17px; line-height:17px;}
+.info .changePw table tr td input[type="submit"]{width:60px; height:30px; font-size:17px; line-height:17px;}
+.info .changePw table tr td label{width:auto;}
+
+/* 회원탈퇴 */
+.delete_info {margin-top:40px; padding:20px; border:1px solid #ddd; line-height:145%; text-align:left;}
+
+.deleteMember {margin-top:40px;}
+.deleteMember table tr td {padding:10px;}
+.deleteMember table tr td label {width:308.89px; text-align:center;}
+.deleteMember table tr td input[type="text"] {width:200px; height:30px;}
+.deleteMember table tr td input[type="password"] {width:200px; height:30px;}
+.deleteMember table tr td input[type="submit"]{width:60px; height:30px; font-size:17px; line-height:17px;}
+.deleteMember table tr td input[type="button"]{width:60px; height:30px; font-size:17px; line-height:17px;}

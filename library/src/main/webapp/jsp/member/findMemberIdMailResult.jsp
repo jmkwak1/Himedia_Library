@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<link href="/css/main.css" rel="stylesheet" type="text/css">
-<link href="/css/container.css" rel="stylesheet" type="text/css">
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<link href="css/container.css" rel="stylesheet" type="text/css">
 
 <title>하이디미어 도서관 - 아이디/비밀번호 찾기</title>
 <c:import url = "/header"/>

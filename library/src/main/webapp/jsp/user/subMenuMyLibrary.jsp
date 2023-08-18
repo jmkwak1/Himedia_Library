@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
-<link href="/css/subMenu.css" rel="stylesheet" type="text/css">
+<link href="css/subMenu.css" rel="stylesheet" type="text/css">
 <c:url var="context" value="/"/>
 <div class = "subMenu subMyLibrary">
 	<h2>마이라이브러리</h2>
@@ -27,5 +27,5 @@
 		<li class="submyLibrary_menu" id="subMyInfo"><a href="/myLibrary/myInfo">회원정보</a></li>
 	</ul>
 </div>
-<script src="/javaScript/subMyLibrary.js"></script>
+<script src="javaScript/subMyLibrary.js"></script>
 

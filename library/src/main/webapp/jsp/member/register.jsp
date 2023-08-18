@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <title>하이디미어 도서관 - 회원가입</title>
-<link href="/css/main.css" rel="stylesheet" type="text/css">
-<link href="/css/container.css" rel="stylesheet" type="text/css">
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<link href="css/container.css" rel="stylesheet" type="text/css">
 
 <c:import url = "/header"/>
 <div class="RegisterContainer inner mb_30" >
@@ -33,13 +33,13 @@
 			<div class="age_adult">
 				<h2>만 14세 이상</h2>
 				<p>일반회원</p>
-				<p><img src = "/image/mem_adult.png"></p>
+				<p><img src = "image/mem_adult.png"></p>
 				<div><a href = "/register1">가입하기</a></div>
 			</div>
 			<div class="age_child">
 				<h2>만 14세 미만</h2>
 				<p>어린이, 학생회원</p>
-				<p><img src = "/image/mem_child.png"></p>
+				<p><img src = "image/mem_child.png"></p>
 				<div><a href = "/register1">가입하기</a></div>
 			</div>
 		</div>

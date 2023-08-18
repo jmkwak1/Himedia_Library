@@ -3,8 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<link href = "/css/main.css" rel = "stylesheet" type = "text/css">
-<link href = "/css/reservation.css" rel = "stylesheet" type = "text/css">
+<link href = "css/main.css" rel = "stylesheet" type = "text/css">
+<link href = "css/reservation.css" rel = "stylesheet" type = "text/css">
 <title>하이미디어 도서관 - 좌석예약</title>
 
 <script>

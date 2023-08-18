@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<link href = "/css/main.css" rel = "stylesheet" type = "text/css">
-<link href = "/css/myLibrary.css" rel = "stylesheet" type = "text/css">
+<link href = "css/main.css" rel = "stylesheet" type = "text/css">
+<link href = "css/myLibrary.css" rel = "stylesheet" type = "text/css">
 <title>하이미디어 도서관 - 마이라이브러리 : 회원정보</title>
 
 <body>
@@ -44,5 +44,5 @@
 		<input type="submit" class="registerBtn" value="수정">
 		<input type="button" class="cancelBtn" value="취소" onclick="location.href='/main'"><br>
 	</form>
-	<script src = "/javaScript/myInfoUpate.js"></script>
+	<script src = "javaScript/myInfoUpate.js"></script>
 </body>

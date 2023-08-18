@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link href="/css/subMenu.css" rel="stylesheet" type="text/css">
+<link href="css/subMenu.css" rel="stylesheet" type="text/css">
 <c:url var="context" value="/"/>
 
 <div class = "subMenu">
@@ -13,5 +13,5 @@
 	</ul>
 </div>
 
-<script src="/javaScript/subMenu.js"></script>
+<script src="javaScript/subMenu.js"></script>
 

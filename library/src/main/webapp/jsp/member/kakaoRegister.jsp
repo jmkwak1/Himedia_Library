@@ -10,9 +10,9 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
-<link href="/css/main.css" rel="stylesheet" type="text/css">
-<link href="/css/kakaoRegister.css" rel="stylesheet" type="text/css">
-<script src = "/javaScript/registerInputInfo.js"></script>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<link href="css/kakaoRegister.css" rel="stylesheet" type="text/css">
+<script src = "javaScript/registerInputInfo.js"></script>
 
 <div class="KRContainer" >
 	<div class="KRContent">

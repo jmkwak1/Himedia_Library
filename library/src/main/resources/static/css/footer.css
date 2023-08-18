@@ -1,0 +1,11 @@
+#wrap {padding:40px 0;}
+.footer {background-color:#dddddd;}
+.footer .inner{overflow:hidden;}
+.left{float:left; width:25%; margin-top:30px;}
+.ri{float:right;width:75%;}
+.etc p {padding-left:30px;font-size:14px; color:#fff;}
+.etc p:last-child {margin-top:30px;}
+.footer ul{font-size:0; margin-bottom:40px;}
+.footer ul li{display:inline-block; font-size:14px; font-weight:400; color:#fff;}
+.footer ul li a{display:block; color:#fff; padding:0 30px;}
+.footer ul li a:hover{text-decoration:underline;}

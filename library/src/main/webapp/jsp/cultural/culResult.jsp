@@ -3,8 +3,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <title>하이디미어 도서관 - 문화행사</title>
 <c:url var="context" value="/" />
-<link href="/css/cultural.css" rel="stylesheet" type="text/css">
-<link href="/css/main.css" rel="stylesheet" type="text/css">
+<link href="css/cultural.css" rel="stylesheet" type="text/css">
+<link href="css/main.css" rel="stylesheet" type="text/css">
 
 <c:import url="/header" />
 
@@ -251,4 +251,4 @@
 </div>
 <c:import url="/footer" />
 
-<script src="/javaScript/subCulTop.js"></script>
+<script src="javaScript/subCulTop.js"></script>

@@ -1,0 +1,120 @@
+@charset "UTF-8";
+
+/*회원정보 수정*/
+.reserve_container {
+	display: flex;
+}
+
+h1 {
+	margin-bottom: 50px;
+}
+
+.checked {
+	font-weight: 600;
+}
+
+.reserve_content {
+	padding: 50px 0 0 50px;
+	width: 1000px;
+}
+
+.reserve_top {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end
+}
+
+.reserve_menu {
+	display: flex;
+}
+
+.reserve_menu > div {
+	border: 1px solid black;
+	margin-left: 20px;
+	text-align: center;
+	line-height: 130%;
+	padding: 10px 8px;
+	cursor: pointer;
+}
+
+.reserve_menu > div > a{
+	display: inline-block;
+	
+}
+
+.subMenu_reserve {
+	border-bottom: 2px solid #ddd;
+	margin-top: 45px;
+}
+
+.subMenu_reserve ul {
+	display: table;
+	border: 1px solid #ddd;
+	border-bottom: none;
+}
+
+.subMenu_reserve ul li {
+	display: table-cell;
+	width: 150px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-right: 1px solid #ddd;
+	cursor: pointer;
+}
+
+.subMenu_reserve ul li:last-child {
+	border-right: none;
+}
+
+.subMenu_reserve ul li.active {
+	background-color: #338cfa;
+	color: #fff;
+}
+
+.subMenu_myInfo ul li:hover {
+	background-color: #338cfa;
+	color: #fff;
+	cursor: pointer;
+}
+
+.active {
+	background: #338cfa;
+	color: #fff;
+}
+
+.RIContainer {
+	width: 700px;
+	padding: 50px 0 50px;
+}
+
+/* 열람실1 */
+.room_container{display: flex;}
+
+.room_container .seat_left, .room_container .seat_right{ 
+	display: inline-block;
+}
+.room_container .seat_division{display: flex; flex-direction: column;}
+.room_container .seat_division .line:nth-child(even){margin-bottom: 30px;}
+
+.room_container .seat_left{margin-right: 40px;} 
+
+.seat_division .line{margin-bottom: 10px;}
+
+.room_container ul {
+	display: flex;
+}
+
+.room_container ul li {
+	border: 1px solid #888;
+	width: 50px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	cursor: pointer;
+	margin-right: 10px;
+}
+
+.room_container ul li:nth-child(2) {
+	margin-right:25px;
+}

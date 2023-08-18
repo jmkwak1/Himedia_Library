@@ -4,8 +4,8 @@
     <head>
 <title>하이미디어 도서관 - 마이라이브러리 : 회원정보</title>
 
-<link href = "/css/main.css" rel = "stylesheet" type = "text/css">
-<link href = "/css/myLibrary.css" rel = "stylesheet" type = "text/css">
+<link href = "css/main.css" rel = "stylesheet" type = "text/css">
+<link href = "css/myLibrary.css" rel = "stylesheet" type = "text/css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>

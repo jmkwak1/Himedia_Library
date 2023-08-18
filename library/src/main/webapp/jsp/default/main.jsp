@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="../../resources/css/home.css" rel="stylesheet" type="text/css">
+<link href="css/home.css" rel="stylesheet" type="text/css">
 
 <title>하이미디어 도서관</title>
 
@@ -20,7 +20,6 @@
         if(updateMsg !== "")
         // alert로 메세지 출력
         	alert(updateMsg);
-        
     </script>
 </head>
 <body class = "mainController">

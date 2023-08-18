@@ -4,8 +4,8 @@
     <head>
     
 <title>하이디미어 도서관 - 로그인</title>
-<link href="/css/main.css" rel="stylesheet" type="text/css">
-<link href="/css/container.css" rel="stylesheet" type="text/css">
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<link href="css/container.css" rel="stylesheet" type="text/css">
 	<script>
         // 메세지 변수를 JavaScript 변수로 변환
         var message = "${msg}";
@@ -20,7 +20,7 @@
     </script>
 
 <c:import url = "/header"/>
-<script src = "/dbLibrary.js"></script>
+<script src = "dbLibrary.js"></script>
 <c:set var="RESTAPIKEY" value="3f70e9cb27d96ef5a414516587c2cb5c"/>
 <c:set var="redirectURI" value="http://localhost/kakaoLogin"/>
 </head>
@@ -36,7 +36,7 @@
 		</div>
 		<div class="contentBox">
 			<div class="loginImgBox">
-				<img src="/image/loginImg.png" alt="yanolja-logo-gray"> 
+				<img src="image/loginImg.png" alt="yanolja-logo-gray"> 
 			</div>
 			<div class="loginFormContainer">
 				<form action="loginProc" method="post" class="mb_10" id="f">
