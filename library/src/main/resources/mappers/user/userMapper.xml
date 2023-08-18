@@ -56,15 +56,15 @@
   	</insert>
   	
   	<select id = "selectInquiry" resultMap="inquiryDto">
-		SELECT BBB.* FROM (SELECT rownum as rn, AAA.* FROM(SELECT * FROM inquiry WHERE id = #{id} ORDER BY no DESC)AAA)BBB WHERE BBB.rn BETWEEN #{begin} AND #{end}
+		SELECT BBB.* FROM (SELECT ROWNUM() as rn, AAA.* FROM(SELECT * FROM inquiry WHERE id = #{id} ORDER BY no DESC)AAA)BBB WHERE BBB.rn BETWEEN #{begin} AND #{end}
   	</select>
   	
   	<select id = "selectInquiryTitle" resultMap="inquiryDto">
-		SELECT CCC.* FROM (SELECT BBB.* FROM (SELECT rownum as rn, AAA.* FROM(SELECT * FROM inquiry WHERE id = #{id} ORDER BY no DESC)AAA)BBB WHERE BBB.rn BETWEEN #{begin} AND #{end})CCC WHERE title like '%'||#{search}||'%'
+		SELECT CCC.* FROM (SELECT BBB.* FROM (SELECT ROWNUM() as rn, AAA.* FROM(SELECT * FROM inquiry WHERE id = #{id} ORDER BY no DESC)AAA)BBB WHERE BBB.rn BETWEEN #{begin} AND #{end})CCC WHERE title like '%'||#{search}||'%'
   	</select>
   	
   	<select id = "selectInquiryReply" resultMap="inquiryDto">
-		SELECT CCC.* FROM (SELECT BBB.* FROM (SELECT rownum as rn, AAA.* FROM(SELECT * FROM inquiry WHERE id = #{id} ORDER BY no DESC)AAA)BBB WHERE BBB.rn BETWEEN #{begin} AND #{end})CCC WHERE reply = #{replySelect}
+		SELECT CCC.* FROM (SELECT BBB.* FROM (SELECT ROWNUM() as rn, AAA.* FROM(SELECT * FROM inquiry WHERE id = #{id} ORDER BY no DESC)AAA)BBB WHERE BBB.rn BETWEEN #{begin} AND #{end})CCC WHERE reply = #{replySelect}
   	</select>
   	
   	<select id = "count">
@@ -72,7 +72,7 @@
   	</select>
   	
   	<select id = "selectMyInquiry" resultMap="inquiryDto">
-  		SELECT BBB.* FROM (SELECT rownum as rn, AAA.* FROM (SELECT * FROM inquiry WHERE id = #{id} ORDER BY no DESC)AAA)BBB WHERE rn = #{rn}
+  		SELECT BBB.* FROM (SELECT ROWNUM() as rn, AAA.* FROM (SELECT * FROM inquiry WHERE id = #{id} ORDER BY no DESC)AAA)BBB WHERE rn = #{rn}
   	</select>
   	
   	<update id = "updateMyInquiry" parameterType="com.care.library.user.InquiryDTO">

@@ -22,7 +22,7 @@
   	</select>
 	
 	<select id = "selectMember" resultMap="memberDto">
-		SELECT rownum as rn, AAA.* FROM (SELECT * FROM member WHERE status = #{memberSelect} ORDER BY auth_date ASC)AAA
+		SELECT ROWNUM() as rn, AAA.* FROM (SELECT * FROM member WHERE status = #{memberSelect} ORDER BY auth_date ASC)AAA
 	</select>
 	
 	<select id = "selectUser" resultMap="memberDto">
@@ -38,7 +38,7 @@
 	</update>
 	
 	<select id="selectInquiry" resultMap="inquiryDto">
-		SELECT BBB.* FROM (SELECT rownum as rn, AAA.* FROM(SELECT * FROM inquiry ORDER BY no ASC)AAA)BBB WHERE BBB.rn BETWEEN #{begin} AND #{end}
+		SELECT BBB.* FROM (SELECT ROWNUM() as rn, AAA.* FROM(SELECT * FROM inquiry ORDER BY no ASC)AAA)BBB WHERE BBB.rn BETWEEN #{begin} AND #{end}
 	</select>
 	
 	<select id="countInquiry">

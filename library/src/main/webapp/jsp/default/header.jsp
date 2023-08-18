@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="/css/header.css" rel="stylesheet" type="text/css">
+    <link href="../../resources/css/header.css" rel="stylesheet" type="text/css">
     <c:url var="context" value="/"/>
     <script>
     	function header(){
@@ -38,13 +38,13 @@
 	<div id="top_container">
 	    <div class="container" id = "container">
 	            <div class="logo">
-	                <a href="${context}main"><img src="/image/LOGO.png"></a>
+	                <a href="${context}main"><img src="../../resources/image/LOGO.png"></a>
 	            </div>
 	            <div class="main_search">
 	                <form action="${context}search" method="post">
 	                    <input type="text" name="query" placeholder="검색어를 입력하세요">
 	                    <button type="submit">
-	                        <img src="/image/search.png" width="25" height="25">
+	                        <img src="../../resources/image/search.png" width="25" height="25">
 	                    </button>
 	                </form>
 	            </div>
@@ -58,7 +58,7 @@
 	                    <li id="adminForm" style = "display:none"><a href="${context}admin/member">관리자페이지</a></li>
 	                    <li id="logout" style = "display:none"><a href="${context}logout">로그아웃</a></li>
 	                    <li id="notify" class="notify"  style="display:none" aria-haspopup="true" aria-expanded="false" onclick="toggleMenu()">
-	                    	<img src = "/image/notifications.png">
+	                    	<img src = "../../resources/image/notifications.png">
 	                    </li>
 	                </ul>
                    	<div id = "notification" class="notification" role = "menu" aria-hidden="true" >
@@ -121,6 +121,6 @@
 	        </ul>
 	    </div>
     </div>
-    <script src = "/javaScript/header.js"></script>
+    <script src = "../../resources/javaScript/header.js"></script>
 </body>
 </html>

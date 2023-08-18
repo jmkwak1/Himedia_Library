@@ -31,7 +31,7 @@
 	<select id="culturalForm" resultMap="culturalDto">
 		SELECT cul_id, title, lecture_start, lecture_end, registration_start,
 		registration_end, target, image_path, count FROM (
-			SELECT CCC.*, ROWNUM as rn FROM (
+			SELECT CCC.*, ROWNUM() as rn FROM (
 				SELECT cul_id, 
 				title, lecture_start, 
 				lecture_end, 

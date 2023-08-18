@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link href="/css/main.css" rel="stylesheet" type="text/css">
-<link href="/css/footer.css" rel="stylesheet" type="text/css">
+<link href="../../resources/css/main.css" rel="stylesheet" type="text/css">
+<link href="../../resources/css/footer.css" rel="stylesheet" type="text/css">
 <div id = "wrap" class = "footer">
 	<div class = "inner">
 		<div class = "left">
-			<a href = "main"><img src = "/image/LOGO.png"></a>
+			<a href = "main"><img src = "../../resources/image/LOGO.png"></a>
 		</div>
 		<div class = "ri">
 			<ul>
