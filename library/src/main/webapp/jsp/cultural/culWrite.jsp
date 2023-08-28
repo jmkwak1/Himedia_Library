@@ -214,4 +214,4 @@
 
 <c:import url="/footer" />
 
-<script src="/javaScript/subCulTop.js"></script>
+<script src="${context}javaScript/subCulTop.js"></script>
