@@ -73,7 +73,7 @@
 	    </div>
     
 	    <div class="cul-list">
-	    	<a href="${context}culForm"><button>문화행사 목록보기</button></a>
+	    	<a href="${context}cullist"><button>문화행사 목록보기</button></a>
 	    </div>
 	</div>	    
 </div>
