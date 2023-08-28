@@ -1,21 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:url var="context" value="/"/>
 
-<link href = "css/main.css" rel = "stylesheet" type = "text/css">
-<link href = "css/admin.css" rel = "stylesheet" type = "text/css">
-<script src = "javaScript/admin.js"></script>
-
-<head>
+<link href = "${context }css/main.css" rel = "stylesheet" type = "text/css">
+<link href = "${context }css/admin.css" rel = "stylesheet" type = "text/css">
+<script src = "${context }javaScript/admin.js"></script>
 	<title>하이미디어 도서관 - 관리자 페이지 : 회원관리</title>
-		<script>
-		document.addEventListener('DOMContentLoaded', function() {
-		      condition();
-		    });
-		</script>
-</head>
-
-<body onload="condition()">
+<body>
 	<div class="contentBox">
 		<form action="">
 			<div class="condition" >
@@ -26,13 +18,6 @@
 					<option <c:if test="${param.memberSelect == 'A'}">selected='selected'</c:if> value = "A">정회원</option>
 					<option <c:if test="${param.memberSelect == 'W'}">selected='selected'</c:if> value = "W">탈퇴회원</option>
 				</select>
-				<label id="idLbl" class="idLbl">아이디</label>
-				<select id="searchSelect" class="searchSelect">
-					<option>아이디</option>
-					<option>이름</option>
-					<option>연락처</option>
-				</select>
-				<input type = "text" placeholder="검색어를 입력하세요." id="memberSearch">
 				<input type = "submit" value = "조회" id="searchBtn">
 			</div>
 			<table class="selectMember">
@@ -60,7 +45,7 @@
 				</tr>
 				<c:choose>
 					<c:when test = "${empty members}">
-						<tr>
+						<tr style = "color:#000; cursor:default">
 							<td colspan=5> 조회된 회원이 없습니다. </td>
 						</tr>
 					</c:when>

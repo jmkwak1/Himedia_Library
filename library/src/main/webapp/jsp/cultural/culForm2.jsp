@@ -3,7 +3,7 @@
 <%@ page import="com.care.library.common.PageService" %>
 <title>하이디미어 도서관 - 문화행사</title>
 <c:url var="context" value="/" />
-<link href="css/cultural.css" rel="stylesheet" type="text/css">
+<link href="${context }css/cultural.css" rel="stylesheet" type="text/css">
 
 <script>
   	document.addEventListener('DOMContentLoaded', function() {	
@@ -95,7 +95,7 @@
 				<li class="ever_one">
 					<a href="" keyvalue1="12" keyvalue2="0" keyvalue3="" class="detail-btn">
 						<div class="thumb">
-							<img src="/image/cullist2.jpg"
+							<img src="${context }image/cullist2.jpg"
 								alt="(체험교실)상상을 표현하는 3D펜 작품 만들기" title="(체험교실)상상을 표현하는 3D펜 작품 만들기"
 								class="teach_img" style="height: 386.4px;">
 						</div>
@@ -116,7 +116,7 @@
 				<li class="ever_one">
 					<a href="" keyvalue1="18" keyvalue2="1" keyvalue3="" class="detail-btn">
 						<div class="thumb">
-							<img src="/image/cullist3.jpg"
+							<img src="${context }image/cullist3.jpg"
 								alt="가족과 함께하는 우리 역사 책놀이" title="가족과 함께하는 우리 역사 책놀이"
 								class="teach_img" style="height: 386.4px;">
 						</div>
@@ -138,7 +138,7 @@
 				<li class="ever_one">
 					<a href="" keyvalue1="12" keyvalue2="0" keyvalue3="7645" class="detail-btn">
 						<div class="thumb">
-							<img src="/image/cullist4.jpg"
+							<img src="${context }image/cullist4.jpg"
 								alt="[청소년 창의특화 프로그램]2023년「문화마루 창작소」: 라탄공예"
 								title="[청소년 창의특화 프로그램]2023년「문화마루 창작소」: 라탄공예" class="teach_img"
 								style="height: 386.4px;">
@@ -166,4 +166,4 @@
 
 <c:import url="/footer" />
 
-<script src="javaScript/subCulTop.js"></script>
+<script src="${context }javaScript/subCulTop.js"></script>

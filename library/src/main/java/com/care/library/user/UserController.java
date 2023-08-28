@@ -37,9 +37,26 @@ public class UserController {
 	
 	//대출/예약/연장 현황
 	@RequestMapping("myLibrary/myBookStatus")
-	public String myBookStatus() {
+	public String myBookStatus(Model model, @RequestParam(value="isbn", required = false)String isbn, 
+			@RequestParam(value="newEndDate", required = false)String newEndDate) {
+		String id = (String)session.getAttribute("id");
+		if(isbn != null) {
+			service.extendLoan(id, isbn, newEndDate, model);
+		}
+		service.getMyBookStatus(id,model);
+		
 		return "user/myBookStatus";
 	}
+	
+	// 대출 이력 조회
+	@RequestMapping("myLibrary/myLoanHistory")
+	public String myLoanHistory(Model model) {
+		String id = (String)session.getAttribute("id");
+		service.getMyLoanHistory(id,model);
+		
+		return "user/myLoanHistory";
+	}
+	
 	
 	// 1:1문의 - 목록
 	@RequestMapping("/myLibrary/myInquiry")
@@ -48,10 +65,6 @@ public class UserController {
 			@RequestParam(value="replySelect", required = false) String replySelect, Model model) {
 		
 		String id = (String)session.getAttribute("id");
-		System.out.println("myInquiryList"+ id);
-		System.out.println("select : " + select);
-		System.out.println("search : " + search);
-		System.out.println("replySelect : " + replySelect);
 		
 		if(id == null || id.equals("")) {
 			return "redirect:main";
@@ -63,7 +76,11 @@ public class UserController {
 		} else if(select.equals("title") && search != null) {
 			service.selectInquiry(cp, search, id, model);
 		} else if(select.equals("reply")) {
-			service.selectInquiry(cp, select, replySelect, id, model);
+			if(replySelect.equals("A")) {
+				service.selectInquiry(cp, id, model);
+			} else {
+				service.selectInquiry(cp, select, replySelect, id, model);
+			}
 		}
 		
 		return "user/myInquiry";

@@ -5,7 +5,8 @@ body {
 #top_container{
 	display: flex;
     flex-direction: column;
-    position: fixed;
+    /*position: fixed;*/
+    position: relative;
     top: 0;
     z-index: 10;
     height: 95px;
@@ -37,7 +38,7 @@ body {
     visibility: visible;
 }
 
-.pageContent_mt{ margin-top: 165px !important;}
+.pageContent_mt{ margin-top: 70px !important;}
 .container {
 	/*max-width: 1200px;*/
 	margin: 0 auto;
@@ -166,6 +167,8 @@ body {
 	flex-direction: column;
 	/*margin: 0 50px;*/
 	width: 200px;
+	color: white;
+	cursor: pointer;
 }
 
 .header_nav li a {

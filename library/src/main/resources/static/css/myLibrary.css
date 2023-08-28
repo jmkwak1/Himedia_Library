@@ -1,8 +1,7 @@
 @charset "UTF-8";
 
-
 /*회원정보 수정*/
-.myLibraryContainer {display:flex;}
+.myLibraryContainer {display:flex; }
 h1{margin-bottom:50px;}
 .checked{font-weight: 600;}
 
@@ -28,8 +27,9 @@ h1{margin-bottom:50px;}
 .condition input[type="button"]{width:50px; height:27px; line-height:27px; font-size:15px;}
 
 .RIContainer{
-	width: 700px; 
+	/*width: 700px; */
 	padding: 50px 0 50px;
+	border-top:1px solid #ddd;
 	}
 .RIContainer .logo{width: 240px; margin:0 auto 20px auto;}
 .RIContainer input{margin: 10px 0 10px; }
@@ -124,6 +124,9 @@ h1{margin-bottom:50px;}
 .inquiryContainer .inquiryWriteForm td{padding:10px;}
 .inquiryContainer .inquiryWriteForm input[type="text"]{height:30px;}
 
+.inquiryContainer .inquiryInfo a{font-weight:500;}
+.inquiryContainer .inquiryInfo a:hover{color:#338cfa;}
+
 /*1:1문의 - 내용*/
 .inquiryContainer .inquiryContentForm{width:100%; border-top:2px solid #555; border-bottom:2px solid #555;}
 .inquiryContainer .inquiryContentForm tr{border-bottom:1px solid #ddd;}
@@ -141,3 +144,15 @@ h1{margin-bottom:50px;}
 .inquiryContainer .inquiryUpdateForm td{padding:10px;}
 .inquiryContainer .inquiryUpdateForm input[type="text"]{height:30px;}
 
+
+/*대출/예약/연장 현황*/
+.bookStatusTable {overflow:hidden; width:100%;}
+.bookStatusTable tr:first-child{border-bottom:2px solid #555;}
+.bookStatusTable tr:hover{cursor:pointer; color:blue;}
+.bookStatusTable tr:first-child:hover{cursor:default; color:#000;}
+.bookStatusTable tr th{padding:5px;}
+.bookStatusTable tr td{padding:5px; text-align:center; border-bottom:1px solid #ddd;}
+
+.bookStatusTable .overDue{color: red;}
+.bookStatusTable tr td .extendBtn{height:30px; padding:2px 7px; background-color: #338cfa;
+border:none; color:white; border-radius: 5px;}

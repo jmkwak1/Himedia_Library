@@ -1,5 +1,5 @@
 /*로그인 화면*/
-.loginContainer{display: flex; margin-top: 225px !important;  margin-top: 165px !important;}
+.loginContainer{display: flex; margin-top: 70px !important;}
 h1{margin-bottom:50px;}
 .checked{font-weight: 600;}
 
@@ -31,7 +31,7 @@ border-color: transparent; margin-top:10px; height:50px; font-size:15px; cursor:
 
 
 /*회원가입 화면*/
-.registerContainer{display:flex; margin-top: 225px !important;  margin-top: 165px !important;}
+.registerContainer{display:flex; margin-top: 70px !important;}
 .register{margin-bottom:20px;}
 .register > div {line-height:145%; margin-bottom:30px;}
 

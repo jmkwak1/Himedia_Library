@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:url var="context" value="/"/>
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="css/header.css" rel="stylesheet" type="text/css">
+    <link href="${context }css/header.css" rel="stylesheet" type="text/css">
     <c:url var="context" value="/"/>
     <script>
     	function header(){
@@ -38,13 +39,14 @@
 	<div id="top_container">
 	    <div class="container" id = "container">
 	            <div class="logo">
-	                <a href="${context}main"><img src="image/LOGO.png"></a>
+	                <a href="${context}main"><img src="${context }image/LOGO.png"></a>
 	            </div>
 	            <div class="main_search">
-	                <form action="${context}search" method="post">
+	                <form action="datasearch/totalSearchProc"
+					method="post" accept-charset="UTF-8" >
 	                    <input type="text" name="query" placeholder="검색어를 입력하세요">
 	                    <button type="submit">
-	                        <img src="image/search.png" width="25" height="25">
+	                        <img src="${context }image/search.png" width="25" height="25">
 	                    </button>
 	                </form>
 	            </div>
@@ -58,7 +60,7 @@
 	                    <li id="adminForm" style = "display:none"><a href="${context}admin/member">관리자페이지</a></li>
 	                    <li id="logout" style = "display:none"><a href="${context}logout">로그아웃</a></li>
 	                    <li id="notify" class="notify"  style="display:none" aria-haspopup="true" aria-expanded="false" onclick="toggleMenu()">
-	                    	<img src = "/image/notifications.png">
+	                    	<img src = "${context }image/notifications.png">
 	                    </li>
 	                </ul>
                    	<div id = "notification" class="notification" role = "menu" aria-hidden="true" >
@@ -88,7 +90,7 @@
 	            </li>
 	            <li><a href="${context}datasearch">자료검색</a>
 	            	<ul class="toggleBox">
-						<li><a href="#" class="menu">통합검색</a></li>
+						<li><a href="${context}datasearch/totalSearch" class="menu">통합검색</a></li>
 						<li><a href="#" class="menu">고급검색</a></li>
 						<li><a href="#" class="menu">자료탐색</a></li>
 						<li><a href="#" class="menu">스마트도서관검색</a></li>
@@ -96,11 +98,11 @@
 						<li><a href="#" class="menu">큐레이션</a></li>
 					</ul>
 	            </li>
-	            <li><a href="${context}reservation">좌석예약</a>
+	            <li class="reservation" onclick="headerReseve('${sessionScope.closedRoom}')">좌석예약
 	            	<ul class="toggleBox">
-						<li><a href="#" class="menu">자율학습실1</a></li>
-						<li><a href="#" class="menu">자율학습실2</a></li>
-						<li><a href="#" class="menu">스터디룸</a></li>
+						<li>자율학습실1</li>
+						<li>자율학습실2</li>
+						<li>스터디룸</li>
 					</ul>
 	            </li>
 	            <li><a href="${context}cultural">문화행사</a>
@@ -110,17 +112,17 @@
 						<li><a href="#" class="menu">한 주제 함께 읽기</a></li>
 					</ul>
 	            </li>
-	            <li><a href="${context}info">정보광장</a>
+	            <li><a href="${context}info/notice">정보광장</a>
 	            	<ul class="toggleBox">
-						<li><a href="#" class="menu">공지사항</a></li>
-						<li><a href="#" class="menu">자주하는 질문</a></li>
-						<li><a href="#" class="menu">자유게시판</a></li>
+						<li><a href="${context }info/notice" class="menu">공지사항</a></li>
+						<li><a href="${context }info/faq" class="menu">자주하는 질문</a></li>
+						<li><a href="${context }info/free" class="menu">자유게시판</a></li>
 						<li><a href="#" class="menu">자원봉사 안내</a></li>
 					</ul>
 	            </li>
 	        </ul>
 	    </div>
     </div>
-    <script src = "javaScript/header.js"></script>
+    <script src = "${context }javaScript/header.js"></script>
 </body>
 </html>

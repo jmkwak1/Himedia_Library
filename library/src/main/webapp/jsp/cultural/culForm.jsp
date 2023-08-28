@@ -3,17 +3,17 @@
 <%@ page import="com.care.library.common.PageService" %>
 <title>하이디미어 도서관 - 문화행사</title>
 <c:url var="context" value="/" />
-<link href="css/cultural.css" rel="stylesheet" type="text/css">
+<link href="${context }css/cultural.css" rel="stylesheet" type="text/css">
 
 <script>
   	document.addEventListener('DOMContentLoaded', function() {	
   		//JavaScript 코드가 DOM이 로드되기 전에 실행되면 해당 요소를 찾을 수 없기 때문에 오류가 발생할 수 있음
   		//DOMContentLoaded 이벤트가 발생할 때까지 스크립트가 실행되지 않고, DOM이 완전히 로드된 이후에 실행
-    var id = "${sessionScope.id}"; // 세션에 저장된 id 값을 가져와서 id 변수에 할당
-    if (id === 'admin') {
+    var status = "${sessionScope.status}"; // 세션에 저장된 id 값을 가져와서 id 변수에 할당
+    if (status === 'M') {
       document.getElementById('apply').style.display = 'block';
     } else {
-      document.getElementById('apply').style.display = 'block';/* 
+      document.getElementById('apply').style.display = 'none';/* 
       document.getElementById('apply').style.display = 'none'; */
     }
   });
@@ -125,4 +125,4 @@
 
 <c:import url="/footer" />
 
-<script src="javaScript/subCulTop.js"></script>
+<script src="${context }javaScript/subCulTop.js"></script>

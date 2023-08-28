@@ -1,5 +1,7 @@
 package com.care.library.member;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,16 +13,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.care.library.reservation.ReserveMapper;
+import com.care.library.reservation.ReserveService;
+import com.care.library.search.SearchMapper;
+import com.care.library.search.SearchService;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 @Controller
 public class MemberController {
 	@Autowired private MemberService service;
 	@Autowired private KakaoService kakaoService;
+	@Autowired private ReserveMapper reserveMapper;
+	@Autowired private SearchService searchService;
 	@Autowired private HttpSession session;
 	
 	@RequestMapping("header")
 	public String header() {
+		int closedRoom = reserveMapper.closeRoomStatus();
+		session.setAttribute("closedRoom", closedRoom); //닫혔다면 1이 들어갈것
 		return "default/header";
 	}
 
@@ -40,7 +51,12 @@ public class MemberController {
 	}
 	
 	@RequestMapping("main")
-	public String main() {
+	public String main(Model model) {
+		service.mainNotice(model);
+		service.mainReadingRoom(model);
+		searchService.getBookImages(model,"popularBook");
+		searchService.getBookImages(model,"recentBook");
+		
 		return "default/main";
 	}
 	

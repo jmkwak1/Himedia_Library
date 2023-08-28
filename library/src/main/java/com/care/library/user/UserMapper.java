@@ -16,7 +16,7 @@ public interface UserMapper {
 
 	int myInquiryWrite(InquiryDTO inquiry);
 
-	int count();
+	int count(String id);
 	
 	String currentPwCheck(String id);
 	
@@ -41,5 +41,7 @@ public interface UserMapper {
 	void deleteMyInquiry(int no);
 
 	String findAdmin();
+
+	int countReply(String id, String replySelect);
 
 }

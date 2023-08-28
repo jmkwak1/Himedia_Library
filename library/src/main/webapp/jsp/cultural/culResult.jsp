@@ -3,8 +3,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <title>하이디미어 도서관 - 문화행사</title>
 <c:url var="context" value="/" />
-<link href="css/cultural.css" rel="stylesheet" type="text/css">
-<link href="css/main.css" rel="stylesheet" type="text/css">
+<link href="${context }css/cultural.css" rel="stylesheet" type="text/css">
+<link href="${context }css/main.css" rel="stylesheet" type="text/css">
 
 <c:import url="/header" />
 
@@ -23,11 +23,11 @@
 					문화교육, 전시, 독서관련 행사, 공모전, 독서캠페인 등을 진행하고 있습니다.<br>
 				</p>
 				<ul class="Route">
-					<li>HOME</li>
+					<li><a href="${context}main">HOME</a></li>
 					<li>&gt;</li>
-					<li>문화행사</li>
+					<li><a href="${context}cultural">문화행사</a></li>
 					<li>&gt;</li>
-					<li>문화행사 결과</li>
+					<li><a href="${context}cullist">문화행사 결과</a></li>
 				</ul>
 			</div>
 		</div>
@@ -251,4 +251,4 @@
 </div>
 <c:import url="/footer" />
 
-<script src="javaScript/subCulTop.js"></script>
+<script src="${context }javaScript/subCulTop.js"></script>

@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:url var="context" value="/"/>
+
 <title>하이디미어 도서관 - 아이디/비밀번호 찾기</title>
-<link href="css/main.css" rel="stylesheet" type="text/css">
-<link href="css/container.css" rel="stylesheet" type="text/css">
+
+<link href="${context }css/main.css" rel="stylesheet" type="text/css">
+<link href="${context }css/container.css" rel="stylesheet" type="text/css">
 <style>
 	.find .active{background-color:#338cfa;}
 	.find .active a{color:#fff;}
@@ -29,12 +32,12 @@
 		<div class="auth">
 			<div class="auth_mobile">
 				<h2>휴대폰 인증</h2>
-				<p><img src = "image/mobile.png"></p>
+				<p><img src = "${context }image/mobile.png"></p>
 				<div><a href = "/register1">휴대폰 인증</a></div>
 			</div>
 			<div class="auth_email">
 				<h2>이메일 인증</h2>
-				<p><img src = "image/email.png"></p>
+				<p><img src = "${context }image/email.png"></p>
 				<div><a href = "/findMemberIdMail">이메일 인증</a></div>
 			</div>
 		</div>

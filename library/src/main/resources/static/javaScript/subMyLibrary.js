@@ -102,7 +102,12 @@
 	      document.getElementById("subMyInquiry").classList.add("active");
 	      document.getElementById("subMyBookStatus").classList.remove("active");
 	      document.getElementById("subMyInfo").classList.remove("active");
-    }
+    }else if(currentURL.includes("LoanHistory")){
+		 document.getElementById("subMyLoanHistory").classList.add("active");
+		  document.getElementById("subMyInfo").classList.remove("active");
+		   document.getElementById("subMyBookStatus").classList.remove("active");
+		    document.getElementById("subMyInquiry").classList.remove("active");
+	}
     }
 
     // 페이지 로드 시 버튼 색상을 설정합니다.

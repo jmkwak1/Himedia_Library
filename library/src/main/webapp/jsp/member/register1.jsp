@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <link href="css/main.css" rel="stylesheet" type="text/css">
-	<link href="css/container.css" rel="stylesheet" type="text/css">
+    <c:url var="context" value="/"/>
+    <link href="${context }css/main.css" rel="stylesheet" type="text/css">
+	<link href="${context }css/container.css" rel="stylesheet" type="text/css">
 	<c:import url = "/header"/>
-	<script src = "dbLibrary.js"></script>
+	<script src = "${context }dbLibrary.js"></script>
 <title>하이디미어 도서관 - 회원가입</title>
 <style>
 .regProcess span.active {background-color:#338cfa; color:#fff;}
@@ -270,7 +271,7 @@
 						</div>
 					</div>
 				<div class="reg_button">
-					<script src="dbLibrary.js"></script>
+					<script src="${context }dbLibrary.js"></script>
 					<input type = "button" value = "확인" onclick="agreementCheck()">
 					<input type = "button" value = "취소" onclick="location.href='main'">
 				</div>

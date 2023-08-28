@@ -33,4 +33,3 @@
 
 	<script src = "javaScript/reservation.js"></script>
 </body>
-

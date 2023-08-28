@@ -1,5 +1,6 @@
 package com.care.library.cultural;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,21 +15,17 @@ public interface CulturalMapper {
 	void insertCultural(CulturalDTO culturalDTO);
 
 	ArrayList<CulturalDTO> culturalForm(@Param("begin") int begin, @Param("end") int end);
+	ArrayList<CulturalDTO> culturalFormEnd(@Param("begin") int begin, @Param("end") int end);
 
 	int count();
 
-	/* ArrayList<CulturalDTO> culForm(HashMap<String, Integer> map); */
-
 	void culFormWriteProc(CulturalDTO cultural);
-	
-	MemberDTO culFormWriteProc(String culId);
-	
-	/*
-	 * void culFormWrite(String imagePath, int culId, String title, String
-	 * lectureStart, String lectureEnd, String registrationStart, String
-	 * registrationEnd, String target, String writeDate);
-	 */
 
-	void culFormWrite(CulturalDTO cultural);
+	CulturalDTO culFormWrite(int culId);	//목록에서 culId값 일치하는 데이터 가저오기
 
+	int countAfterDate(String today); 
+
+	void updateCulturalProc(CulturalDTO cultural); 
+	
+	void culturalDeleteProc(int culId);
 }

@@ -45,13 +45,21 @@
 	white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
 }
 
-.Route{
-	display: flex;
-	margin-top: 55px;
+.Route {
+  display: flex;
+  margin-top: 55px;
 }
 
-.Route li{
-	margin-right:10px;
+.Route li {
+  margin-right: 10px;
+  font-size: 16px;
+	color: #14100c;
+	font-weight: 300;
+	line-height: 1;
+}
+
+.Route li:last-child {
+	  font-weight: bold; /* 마지막 li에 굵은 글꼴 적용 */
 }
 
 .bottom-cultural {
@@ -89,6 +97,11 @@
 
 /*****************************culForm********************************/
 /*신청하기*/
+.apply{
+		text-align:right;
+		margin-top:10px;
+	}
+	
 .apply ul{
 	display: flex;
 	justify-content: right;
@@ -105,8 +118,18 @@
 .apply ul li a{
 	color: white;
 }
+<<<<<<< HEAD
 /**************************************************/
+=======
+/************************culForm**************************/
+/*상단메뉴바*/
+.top-menu{border-bottom:2px solid #ddd; margin-top:45px;}
+.top-menu ul{display:table; border:1px solid #ddd; border-bottom:none;}
+.top-menu ul li{display:table-cell; width:150px; height:40px; line-height:40px; text-align:center; border-right:1px solid #ddd;}
+.top-menu ul li:last-child{border-right:none;}
+>>>>>>> refs/heads/main
 
+<<<<<<< HEAD
 .top-menu{
 	margin-top: 30px;
 	margin-bottom: 00px;	
@@ -128,25 +151,39 @@
 .top-menu ul li.active a{
 	color: white;
   }
+=======
+.top-menu ul li a{display:block;}
+
+.top-menu ul li.active{background-color:#338cfa;}
+.top-menu ul li.active a{color:#fff;}
+
+.top-menu ul li:hover{background-color:#338cfa;}
+.top-menu ul li:hover a{color:#fff;}
+>>>>>>> refs/heads/main
   
-.cul-list{
+/*.cul-list{
   	display: flex;
  	justify-content: center;
- 	/*text-align: center;*/
+ 	text-align: center;
  	margin-top: 30px;
   	margin-bottom: 20px;
 }
 
 .teach_list {
-  	/*list-style: none; /* 기본 글머리 기호 제거 */
+  	list-style: none;  기본 글머리 기호 제거 
   	padding: 0;
   	display: flex;
-  	flex-wrap: wrap; /* 항목이 다음 줄로 줄 바꿈되도록 허용 */
-}
-
+  	flex-wrap: wrap;  항목이 다음 줄로 줄 바꿈되도록 허용 
+}*/
+/*
 .ever_one{
+<<<<<<< HEAD
 	flex: 0 0 calc(33.33% - 30px); /* 1줄에 3개 요소가 보이도록 설정 */
 	margin:0px 15px 25px 10px;
+=======
+	flex: 0 0 calc(33.33% - 30px);  1줄에 3개 요소가 보이도록 설정 
+	margin:0px 15px 25px 5px;
+>>>>>>> refs/heads/main
 }
 
 .list_area {
@@ -154,7 +191,7 @@
 }
 
 .list_area .title_area{
-	word-break: break-all;	/*긴 단어가 줄바꿈 없이 오른쪽 끝까지 채워지고, 공백이 없이 다음 줄로 변경*/
+	word-break: break-all;	긴 단어가 줄바꿈 없이 오른쪽 끝까지 채워지고, 공백이 없이 다음 줄로 변경
 	line-height: 1.2;
 	margin:20px 10px 20px 10px;
 	font-size: 18px;
@@ -166,35 +203,47 @@
 
 .list_area .con2 li {
   position: relative;
-  padding-left: 10px; /* 마커와 텍스트 사이의 간격을 조절하기 위한 패딩 값 */
+  padding-left: 10px;  마커와 텍스트 사이의 간격을 조절하기 위한 패딩 값 
   margin-bottom: 10px;
 }
 
-.list_area .con2 li:first-child::before{	/*첫번째 li만 적용(2줄짜리 텍스트라 따로 함)*/
-	content: "•"; /* 임의의 원형 마커를 생성 */
-  	color: #999999; /* 마커 색상 */
-  	font-size: 16px; /* 마커 크기 */
+.list_area .con2 li:first-child::before{	첫번째 li만 적용(2줄짜리 텍스트라 따로 함)
+	content: "•";  임의의 원형 마커를 생성 
+  	color: #999999;  마커 색상 
+  	font-size: 16px;  마커 크기 
  	position: absolute;
   	left: 0;
-  	top: 22%;
-  	transform: translateY(-50%);	/*세로 중앙을 기준으로 위쪽으로 50%만큼 이동*/
+  	top: 50%;
+  	transform: translateY(-50%);	세로 중앙을 기준으로 위쪽으로 50%만큼 이동
 }
 
-.list_area .con2 li::before {		/*::before > 선택한 요소의 시작 부분에 콘텐츠를 생성*/
-  content: "•"; /* 임의의 원형 마커를 생성 */
-  color: #999999; /* 마커 색상 */
-  font-size: 16px; /* 마커 크기 */
+.list_area .con2 li::before {		::before > 선택한 요소의 시작 부분에 콘텐츠를 생성
+  content: "•";  임의의 원형 마커를 생성 
+  color: #999999;  마커 색상 
+  font-size: 16px;  마커 크기 
   position: absolute;
   left: 0;
   top: 50%;
-  transform: translateY(-50%);	/*세로 중앙을 기준으로 위쪽으로 50%만큼 이동*/
+  transform: translateY(-50%);	세로 중앙을 기준으로 위쪽으로 50%만큼 이동
 }
 
 .list_area .con2 li span{
 	margin-right: 20px;
 }
+*/
+/*.write {text-align:right; margin-bottom:40px;}
+.write input[type="button"]{width:100px; height:27px; line-height:27px; font-size:15px;}*/
+
+.noticeContainer{text-align:center; border-top:1px solid #ddd;}
+.notice {overflow:hidden; width:100%;}
+.notice tr:first-child{border-bottom:2px solid #555;}
+.notice tr:hover{cursor:pointer; color:blue;}
+.notice tr:first-child:hover{cursor:default; color:#000;}
+.notice tr th{padding:5px;}
+.notice tr td{padding:5px; text-align:center; border-bottom:1px solid #ddd;}
 
 
+<<<<<<< HEAD
 /*****************************culResult********************************/
 .resultMenu{
 	margin-top: 30px;
@@ -217,6 +266,34 @@
 .resultMenu ul li.active a{
 	color: white;
   }
+=======
+/*****************************culSubmit********************************/
+/*상단 메뉴바*/
+.resultMenu{border-bottom:2px solid #ddd; margin-top:45px;}
+.resultMenu ul{display:table; border:1px solid #ddd; border-bottom:none;}
+.resultMenu ul li{display:table-cell; width:150px; height:40px; line-height:40px; text-align:center; border-right:1px solid #ddd;}
+.resultMenu ul li:last-child{border-right:none;}
+
+.resultMenu ul li a{display:block;}
+
+.top-menu ul li.active{background-color:#338cfa;}
+.top-menu ul li.active a{color:#fff;}
+
+.top-menu ul li:hover{background-color:#338cfa;}
+.top-menu ul li:hover a{color:#fff;}
+
+/*페이지 처리*/
+.culturalContainer .paging{margin-top:20px;}
+.culturalContainer .paging a{text-align:center; display:inline-block; width:30px; height:30px; line-height:30px; font-weight:400; border:1px solid #ddd; margin-right:5px; font-size:15px; padding:0}
+.culturalContainer .paging a:last-child{margin-right:0;}
+
+/*culSubmit 게시판*/
+.inquiryContainer .inquiryWriteForm{width:100%; border-top:2px solid #555; border-bottom:2px solid #555;}
+.inquiryContainer .inquiryWriteForm tr{border-bottom:1px solid #ddd;}
+.inquiryContainer .inquiryWriteForm th{padding:10px 50px; border-right:1px solid #ddd;}
+.inquiryContainer .inquiryWriteForm tr td{padding:10px; color:black;}
+.inquiryContainer .inquiryWriteForm input[type="text"]{height:30px; color:black;}
+>>>>>>> refs/heads/main
 
 
 

@@ -2,9 +2,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<<<<<<< HEAD
 
 <link href="css/main.css" rel="stylesheet" type="text/css">
 <link href="css/container.css" rel="stylesheet" type="text/css">
+=======
+<c:url var="context" value="/"/>
+<link href="${context }css/main.css" rel="stylesheet" type="text/css">
+<link href="${context }css/container.css" rel="stylesheet" type="text/css">
+>>>>>>> refs/heads/main
 
 <title>하이디미어 도서관 - 아이디/비밀번호 찾기</title>
 <c:import url = "/header"/>
@@ -39,7 +45,7 @@
 			<div class="auth_email" align="center">
 					<h2>이메일 인증</h2>
 					<form class="form" method="post" id ="emailForm" action="findMemberPwMailResult" align="center">
-						<p><img src = "/image/email.png"></p>
+						<p><img src = "${context }image/email.png"></p>
 						<div>
 							<input type = "text" placeholder = "아이디를 입력해주세요." id = "authId" name = "authId" class="authId" style = "width:55%">
 							<input type = "button" value = "확인" style = "width:40%; margin-left:0px;" onclick = "findPwIdChk()">

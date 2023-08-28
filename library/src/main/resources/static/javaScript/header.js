@@ -38,3 +38,12 @@ window.addEventListener('scroll', function () {
         header_nav.classList.remove('fix');
     }
 });
+
+
+function headerReseve(closedRoom){
+	if(closedRoom == 1){
+		alert("열람실 예약 가능한 시간이 아닙니다.");
+	}else{
+		location.href="/reservation/readingRoom1";
+	}
+}

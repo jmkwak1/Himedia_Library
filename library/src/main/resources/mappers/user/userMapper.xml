@@ -36,7 +36,7 @@
 	
 	<!-- 회원탈퇴 (게시글 및 리뷰 보존을 위해 아이디를 난수로 변경, 기타 개인정보는 null) -->
 	<update id = "updateId">
-		UPDATE member SET id = #{delId}, name = '', pro_name = '', birth = '', email = '', post_code = '', address = '', detail_address = '', mobile = '', reg_date='', status = 'W', kakaoid='' WHERE id = #{id}
+		UPDATE member SET id = #{delId}, name = '', pro_name = '', birth = '', email = '', post_code = '', address = '', detail_address = '', mobile = '', reg_date='', status = 'W', kakaoid='', auth_date = '', paper = '', user_group = '', reject = '' WHERE id = #{id}
 	</update>
 
 	
@@ -52,7 +52,7 @@
   	</select>
   	
   	<insert id = "myInquiryWrite" parameterType="com.care.library.user.InquiryDTO">
-  		INSERT INTO inquiry (no, title, content, id, write_date, reply) VALUES (#{no}, #{title}, #{content}, #{id}, #{writeDate}, #{reply})
+  		INSERT INTO inquiry (no, title, content, id, write_date, reply) VALUES (#{no}, #{title}, #{content}, #{id}, #{writeDate}, 'N')
   	</insert>
   	
   	<select id = "selectInquiry" resultMap="inquiryDto">
@@ -68,7 +68,11 @@
   	</select>
   	
   	<select id = "count">
-  		SELECT count(no) FROM inquiry
+  		SELECT count(no) FROM inquiry WHERE id = #{id}
+  	</select>
+
+  	<select id = "countReply">
+  		SELECT count(no) FROM inquiry WHERE id = #{id} AND reply = #{replySelect}
   	</select>
   	
   	<select id = "selectMyInquiry" resultMap="inquiryDto">

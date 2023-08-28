@@ -33,9 +33,23 @@
         else if (currentURL.includes("cultural")) {
         document.getElementById("cultural").classList.add("active");
         document.getElementById("cullist").classList.remove("active");
+        document.getElementById("culResult").classList.remove("active");
       } else if (currentURL.includes("cullist")) {
-        document.getElementById("cullist").classList.add("active");
         document.getElementById("cultural").classList.remove("active");
+        document.getElementById("cullist").classList.add("active");
+        document.getElementById("culResult").classList.remove("active");
+      }else if (currentURL.includes("culFormEnd")) {
+        document.getElementById("cultural").classList.remove("active");
+        document.getElementById("cullist").classList.add("active");
+        document.getElementById("culResult").classList.remove("active");
+      }else if (currentURL.includes("culWrite")) {
+        document.getElementById("cultural").classList.remove("active");
+        document.getElementById("cullist").classList.add("active");
+        document.getElementById("culResult").classList.remove("active");
+      }else if (currentURL.includes("culModify")) {
+        document.getElementById("cultural").classList.remove("active");
+        document.getElementById("cullist").classList.add("active");
+        document.getElementById("culResult").classList.remove("active");
       }
     }
 

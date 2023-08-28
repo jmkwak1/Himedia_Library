@@ -2,9 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<link href="css/main.css" rel="stylesheet" type="text/css">
-<link href="css/container.css" rel="stylesheet" type="text/css">
+<c:url var="context" value="/"/>
+<link href="${context }css/main.css" rel="stylesheet" type="text/css">
+<link href="${context }css/container.css" rel="stylesheet" type="text/css">
 
 <title>하이디미어 도서관 - 회원가입</title>
 <c:import url = "/header"/>
@@ -39,7 +39,7 @@ input[type="button"] {width:399.85px; height:45px; border:1px solid #ddd; cursor
 			<div class="auth_email">
 					<h2>이메일 인증</h2>
 					<form class="form" method="post" id ="emailForm">
-						<p><img src = "/image/email.png"></p>
+						<p><img src = "${context }image/email.png"></p>
 						<input type = "text" placeholder = "이메일을 입력해주세요." id = "authEmail" name = "authEmail" class="authEmail"><br><br>
 						<label id = "label"></label><br><br>
 						<input type = "button" value = "인증 메일 발송" onclick = "sendEmail()"/>
