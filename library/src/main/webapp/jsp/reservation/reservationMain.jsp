@@ -24,7 +24,7 @@
 				</div>
 				<div class="RIContainer">
 					<div id="room_container">
-						<c:import url="/reservation/readingRoom1"/>
+						<c:import url="${context }reservation/readingRoom1"/>
 					</div>
 				</div>
 			</div>

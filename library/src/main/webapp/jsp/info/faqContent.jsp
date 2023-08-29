@@ -57,10 +57,10 @@
 				</table>
 				<div class="noticeBtn">
 					<c:if test = "${sessionScope.status == 'M'}">
-						<input type="button" value="수정" onclick="location.href='faqUpdate?no=${faq.no}'">
+						<input type="button" value="수정" onclick="location.href='${context }info/faqUpdate?no=${faq.no}'">
 						<input type="button" value="삭제" onclick="delFaq()">
 					</c:if>
-					<input type="button" value="목록" onclick="location.href='faq'">
+					<input type="button" value="목록" onclick="location.href='${context }info/faq'">
 				</div>
 			</div>
 		</div>

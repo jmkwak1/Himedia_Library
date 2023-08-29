@@ -26,7 +26,7 @@
 					<div class="content left">
 						<div class="popularBook">
 							<div>
-								<img src="/image/popBook.png"/>
+								<img src="${context }image/popBook.png"/>
 								<span>인기도서</span>
 							</div>
 							<div class="bookContainer">
@@ -37,7 +37,7 @@
 						</div>
 						<div class="newBook">
 							<div>
-								<img src="/image/newBook.png"/>
+								<img src="${context }image/newBook.png"/>
 								<span>신착도서</span>
 							</div>
 							<div class="bookContainer">

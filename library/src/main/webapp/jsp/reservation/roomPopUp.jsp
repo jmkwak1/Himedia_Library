@@ -34,5 +34,5 @@
 			</div>
 		</div>
 	</div>
-	<script src="{context}javaScript/reservation.js"></script>
+	<script src="${context}javaScript/reservation.js"></script>
 </body>

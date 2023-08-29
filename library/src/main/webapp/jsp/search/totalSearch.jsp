@@ -23,8 +23,8 @@
 					<p>소장하고 있는 자료에 대한 가장 기본적인 검색입니다.</p>
 				</div>
 				<div class="mb_30 mt_20">
-					<a href="/main">HOME</a> > <a href="/datasearch">자료검색</a> > <a
-						class="checked" href="/datasearch/totalSearch">통합검색</a>
+					<a href="/main">HOME</a> > <a href="${context }search/datasearch">자료검색</a> > <a
+						class="checked" href="${context }datasearch/totalSearch">통합검색</a>
 				</div>
 			</div>
 			<div class="searchBox">
@@ -33,7 +33,7 @@
 					<input class="searchInput" name="totalSearch"
 						placeholder="검색어를 입력하세요.">
 					<button class="search_Btn totalSearch">
-						<img src="/image/search.png">
+						<img src="${context }image/search.png">
 					</button>
 				</form>
 			</div>
@@ -64,7 +64,7 @@
 											<span class="bookStatusButton"
 												onclick="toggleBookStatusPopup('bookStatusPopup${result.isbn}')">소장
 												정보</span> <span class="bookDtlButton"
-												onclick="location.href='/datasearch/bookDetail?isbn=${result.isbn}'">도서
+												onclick="location.href='${context }datasearch/bookDetail?isbn=${result.isbn}'">도서
 												정보</span>
 										</div>
 

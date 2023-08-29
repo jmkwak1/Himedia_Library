@@ -33,7 +33,7 @@
 	<div class="loginContent">
 		<h1>회원탈퇴</h1>
 		<div class="mb_30 mt_20">
-			<a href="/main">HOME</a> > <a href="/register">회원정보</a> > <a class="checked" href="/deleteMember">회원탈퇴</a>
+			<a href="/main">HOME</a> > <a href="${context }member/register">회원정보</a> > <a class="checked" href="${context }member/deleteMember">회원탈퇴</a>
 		</div>
 		<div>
 			<h2 align="center">회원탈퇴</h2>
@@ -56,7 +56,7 @@
 						<tr>
 							<td colspan=2 align="center">
 								<div>
-									<input type="button" value="탈퇴" onclick="deletePwChk()"> <input type="button" value="취소" style="margin-left:10px" onclick="location.href='/login'">
+									<input type="button" value="탈퇴" onclick="deletePwChk()"> <input type="button" value="취소" style="margin-left:10px" onclick="location.href='${context }member/login'">
 								</div>
 							</td>
 						</tr>

@@ -26,8 +26,8 @@
 				<h1>1:1문의</h1>
 				<div class="mb_30 mt_20">
 					<a href="/main">HOME</a> > 
-					<a href="/myLibrary">마이라이브러리</a> >
-					<a class="checked" href="/myLibrary/myInquiry">1:1문의</a>
+					<a href="${context }myLibrary">마이라이브러리</a> >
+					<a class="checked" href="${context }myLibrary/myInquiry">1:1문의</a>
 				</div>
 			</div>
 			<div class="inquiryContainer">
@@ -65,10 +65,10 @@
 				</table>
 				<div class="inquiryBtn">
 				<c:if test = "${inquiry.reply == 'N'}">
-					<input type = "button" value = "수정" onclick="location.href='myInquiryUpdate?rn=${inquiry.rn}'">
+					<input type = "button" value = "수정" onclick="location.href='${context }myInquiryUpdate?rn=${inquiry.rn}'">
 					<input type = "button" value = "삭제" onclick="delInquiry()">
 				</c:if>
-					<input type = "button" value = "목록" onclick="location.href='myInquiry'">
+					<input type = "button" value = "목록" onclick="location.href='${context }myInquiry'">
 				</div>
 			</div>
 		</div>

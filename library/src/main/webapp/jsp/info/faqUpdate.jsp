@@ -52,7 +52,7 @@
 						</tr>
 					</table>
 					<div class="noticeBtn">
-						<input type = "button" value = "돌아가기" onclick="location.href='faqContent?no=${faq.no}'">
+						<input type = "button" value = "돌아가기" onclick="location.href='${context }info/faqContent?no=${faq.no}'">
 						<input type = "button" value = "수정" onclick="faqUpdateChk()" >
 					</div>
 				</form>

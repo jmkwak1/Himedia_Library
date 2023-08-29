@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	<div class="adminContent">
 		<h1>대출관리</h1>
 		<div class="mb_30 mt_20" style = "border-bottom:1px solid #ddd; padding-bottom:20px;">
-			<a href="/main">HOME</a> > 
+			<a href="${context }main">HOME</a> > 
 			<a href="${context }admin/member">관리자페이지</a> >
 			<a class="checked" href="${context }admin/book">대출관리</a>
 		</div>

@@ -12,9 +12,9 @@
 	<div class="loginContent">
 		<h1>회원가입</h1>
 		<div class="mb_30 mt_20">
-			<a href="/main">HOME</a> > 
-			<a href="/register">회원정보</a> >
-			<a class="checked" href="/register">회원가입</a>
+			<a href="${context }main">HOME</a> > 
+			<a href="${context }register">회원정보</a> >
+			<a class="checked" href="${context }register">회원가입</a>
 		</div>
 		<div class="register">
 			<div>
@@ -35,13 +35,13 @@
 				<h2>만 14세 이상</h2>
 				<p>일반회원</p>
 				<p><img src = "${context }image/mem_adult.png"></p>
-				<div><a href = "/register1">가입하기</a></div>
+				<div><a href = "${context }register1">가입하기</a></div>
 			</div>
 			<div class="age_child">
 				<h2>만 14세 미만</h2>
 				<p>어린이, 학생회원</p>
 				<p><img src = "${context }image/mem_child.png"></p>
-				<div><a href = "/register1">가입하기</a></div>
+				<div><a href = "${context }register1">가입하기</a></div>
 			</div>
 		</div>
 	</div>

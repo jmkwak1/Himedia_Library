@@ -77,10 +77,6 @@
 		UPDATE member SET status = 'D', reject = #{reject} WHERE id = #{id}
 	</update>
 	
-	<select id="selectInquiry" resultMap="inquiryDto">
-		SELECT BBB.* FROM (SELECT ROWNUM() as rn, AAA.* FROM(SELECT * FROM inquiry ORDER BY no ASC)AAA)BBB WHERE BBB.rn BETWEEN #{begin} AND #{end}
-	</select>
-	
 	<select id = "searchLoan" resultMap="bookLoanDto">
 		SELECT BBB.* FROM(SELECT ROWNUM() as rn, AAA.* FROM (SELECT * FROM bookloan WHERE status = #{loanStatusSelect} ORDER BY loan_id ASC)AAA)BBB WHERE rn BETWEEN #{begin} AND #{end}
 	</select>

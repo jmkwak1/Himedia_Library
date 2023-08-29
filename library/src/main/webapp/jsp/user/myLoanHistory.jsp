@@ -18,8 +18,8 @@
 					<h1>대출 이력 조회</h1>
 					<div class="mb_30 mt_20">
 						<a href="/main">HOME</a> > 
-						<a href="/adminMember">마이라이브러리</a> >
-						<a class="checked" href="/adminMember">대출 이력 조회</a>
+						<a href="${context }adminMember">마이라이브러리</a> >
+						<a class="checked" href="${context }adminMember">대출 이력 조회</a>
 					</div>
 				</div>
 				<div class="RIContainer">

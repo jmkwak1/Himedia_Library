@@ -36,7 +36,7 @@
 				</div>
 				<div class="RIContainer">
 					<div id="myInfoContainer">
-						<c:import url="/myLibrary/updateInfo"/>
+						<c:import url="${context }myLibrary/updateInfo"/>
 					</div>
 				</div>
 			</div>

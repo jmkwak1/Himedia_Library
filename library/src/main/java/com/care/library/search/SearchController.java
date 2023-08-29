@@ -22,8 +22,6 @@ import com.care.library.reservation.ReserveDTO;
 
 import jakarta.servlet.http.HttpSession;
 
-@EnableScheduling
-@EnableAsync
 @Controller
 public class SearchController {
 

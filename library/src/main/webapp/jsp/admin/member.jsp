@@ -39,13 +39,13 @@
 				<div class="mb_30 mt_20">
 					<a href="/main">HOME</a> > 
 					<a href="${context }admin/member">관리자페이지</a> >
-					<a class="checked" href="/member">회원관리</a>
+					<a class="checked" href="${context }admin/member">회원관리</a>
 				</div>
 				<div class = "subMenu_member" id = "subMenu_member">
 					<ul class = "admin_member">
 						<li class = "admin_menu" onclick="showMember('memberAuth')">인증 승인/반려</li>
-						<li class = "admin_menu" onclick="location.href='memberSanction'">회원 제재</li>
-						<li class = "admin_menu" id="memberListMenu" onclick="location.href='memberList'">회원 목록 조회</li>
+						<li class = "admin_menu" onclick="location.href='${context }/memberSanction'">회원 제재</li>
+						<li class = "admin_menu" id="memberListMenu" onclick="location.href='${context }/memberList'">회원 목록 조회</li>
 					</ul>
 				</div>
 			</div>

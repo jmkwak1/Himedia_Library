@@ -22,7 +22,7 @@
 					</c:when>
 					<c:otherwise>
 						<c:forEach var="faq" items="${faqs }">
-							<tr onclick="location.href='faqContent?no=${faq.no}'">
+							<tr onclick="location.href='${context }info/faqContent?no=${faq.no}'">
 								<td>${faq.rn }</td>
 								<td>${faq.title}</td>
 							</tr>

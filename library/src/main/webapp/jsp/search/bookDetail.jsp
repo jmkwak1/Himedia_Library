@@ -19,8 +19,8 @@
 			<div>
 				<h1>통합검색</h1>
 				<div class="mb_30 mt_20">
-					<a href="/main">HOME</a> > <a href="/datasearch">자료검색</a> > <a
-						class="checked" href="/datasearch/totalSearch">통합검색</a>
+					<a href="/main">HOME</a> > <a href="${context }search/datasearch">자료검색</a> > <a
+						class="checked" href="${context }search/datasearch/totalSearch">통합검색</a>
 				</div>
 			</div>
 			<div class="detail_contentBox">

@@ -130,8 +130,4 @@
 	}
 </script>
 
-<<<<<<< HEAD
-<script src = "javaScript/admin.js"></script>
-=======
 <script src = "${context }javaScript/admin.js"></script>
->>>>>>> refs/heads/main

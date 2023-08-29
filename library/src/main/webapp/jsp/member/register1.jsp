@@ -16,8 +16,8 @@
 		<h1>회원가입</h1>
 		<div class="mb_30 mt_20">
 			<a href="/main">HOME</a> > 
-			<a href="/register">회원정보</a> >
-			<a class="checked" href="/register">회원가입</a>
+			<a href="${context }register">회원정보</a> >
+			<a class="checked" href="${context }register">회원가입</a>
 		</div>
 		<div class="register">
 			<div class="regProcess">
@@ -273,7 +273,7 @@
 				<div class="reg_button">
 					<script src="${context }dbLibrary.js"></script>
 					<input type = "button" value = "확인" onclick="agreementCheck()">
-					<input type = "button" value = "취소" onclick="location.href='main'">
+					<input type = "button" value = "취소" onclick="location.href='${context }main'">
 				</div>
 		</form>
 	</div>

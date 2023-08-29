@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			<c:import url = "${context }info/faqList"/>
 			<c:if test = "${sessionScope.status == 'M'}">
 				<div class="write">
-					<input type = "button" value = "등록" onclick="location.href='faqWriteForm'">
+					<input type = "button" value = "등록" onclick="location.href='${context }info/faqWriteForm'">
 				</div>
 			</c:if>
 		</div>

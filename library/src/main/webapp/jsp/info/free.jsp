@@ -56,7 +56,7 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach var="free" items = "${frees}">
-									<tr onclick="location.href='freeContent?no=${free.no}'">
+									<tr onclick="location.href='${context }info/freeContent?no=${free.no}'">
 										<td>${free.no}</td>
 										<td>${free.title }
 											<c:if test = "${free.replies > 0}"> (${free.replies })</c:if>
@@ -71,7 +71,7 @@
 					</table>
 					<c:if test = "${sessionScope.id != null }">
 						<div class="writeBtn">
-							<input type = "button" value = "글쓰기" onclick="location.href='freeWriteForm'">
+							<input type = "button" value = "글쓰기" onclick="location.href='${context }info/freeWriteForm'">
 						</div>
 					</c:if>
 					<div class="freePage">

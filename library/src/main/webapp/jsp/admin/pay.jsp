@@ -75,7 +75,7 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach var="inquiry" items = "${inquiries}">
-									<tr onclick="location.href='inquiryContent?no=${inquiry.no}'">
+									<tr onclick="location.href='${context }admin/inquiryContent?no=${inquiry.no}'">
 										<td>${inquiry.no}</td>
 										<td>${inquiry.title }</td>
 										<td>

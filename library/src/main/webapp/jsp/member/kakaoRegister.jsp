@@ -18,7 +18,7 @@
 <div class="KRContainer" >
 	<div class="KRContent">
 		<div class="logo">
-        	<a href="${context}main"><img src="/image/LOGO.png"></a>
+        	<a href="${context}main"><img src="${context }image/LOGO.png"></a>
 		</div>
 		<h1 class="mb_20">카카오 연동 회원가입</h1>
 		<!--아이디(중복체크), 비밀번호, 이름, 생년월일, 주소, 전화번호 -->
@@ -62,7 +62,7 @@
 			<input type="text" id="regDate" name="regDate" style="display: none;"><br>
 			
 			<input type="button" class="registerBtn" value="회원가입" onclick="allCheck()">
-			<input type="button" class="cancelBtn" value="취소" onclick="location.href='login'"><br>
+			<input type="button" class="cancelBtn" value="취소" onclick="location.href='${context }member/login'"><br>
 		</form>
 	</div>
 </div>

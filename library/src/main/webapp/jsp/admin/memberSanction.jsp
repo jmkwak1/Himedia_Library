@@ -23,8 +23,8 @@
 				<div class = "subMenu_member" id = "subMenu_member">
 					<ul class = "admin_member">
 						<li class = "admin_menu" onclick="location.href='${context }admin/member'">인증 승인/반려</li>
-						<li class = "admin_menu active" onclick="location.href='memberSanction'">회원 제재</li>
-						<li class = "admin_menu" id="memberListMenu" onclick="location.href='memberList'">회원 목록 조회</li>
+						<li class = "admin_menu active" onclick="location.href='${context }admin/memberSanction'">회원 제재</li>
+						<li class = "admin_menu" id="memberListMenu" onclick="location.href='${context }admin/memberList'">회원 목록 조회</li>
 					</ul>
 				</div>
 			</div>
@@ -82,7 +82,7 @@
 									<c:otherwise>
 										<c:forEach var="member" items="${members }">
 											<tr <c:if test = "${param.memberSelect == 'R' || param.memberSelect == null}">
-												<tr onclick = "location.href='memberDetail?id=${member.id }'" style="cursor:pointer;">
+												<tr onclick = "location.href='${context }admin/memberDetail?id=${member.id }'" style="cursor:pointer;">
 												</c:if>>
 												<td>${member.rn }</td>
 												<td>${member.id }</td>

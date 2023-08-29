@@ -36,7 +36,7 @@
 					</div>
 					<c:if test = "${sessionScope.status == 'M'}">
 						<div class="write">
-							<input type = "button" value = "공지사항 등록" onclick="location.href='noticeWriteForm'">
+							<input type = "button" value = "공지사항 등록" onclick="location.href='${context }info/noticeWriteForm'">
 						</div>
 					</c:if>
 					<table class="notice">
@@ -56,7 +56,7 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach var="notice" items = "${notices}">
-									<tr onclick="location.href='noticeContent?no=${notice.no}'">
+									<tr onclick="location.href='${context }info/noticeContent?no=${notice.no}'">
 										<td>${notice.no}</td>
 										<td>${notice.title }</td>
 										<td>${notice.writeDate }</td>

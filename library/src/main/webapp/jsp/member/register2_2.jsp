@@ -23,8 +23,8 @@ input[type="button"] {width:399.85px; height:45px; border:1px solid #ddd; cursor
 		<h1>회원가입</h1>
 		<div class="mb_30 mt_20">
 			<a href="/main">HOME</a> > 
-			<a href="/register">회원정보</a> >
-			<a class="checked" href="/register">회원가입</a>
+			<a href="${context }member/register">회원정보</a> >
+			<a class="checked" href="${context }member/register">회원가입</a>
 		</div>
 		<div class="register">
 			<div class="regProcess">

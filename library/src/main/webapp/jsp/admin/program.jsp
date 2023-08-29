@@ -91,10 +91,10 @@
 							<c:forEach var="loan" items = "${loans}">
 								<c:choose>
 									<c:when test = "${param.loanStatusSelect == 'R' || param.loanStatusSelect == null}">
-										<tr onclick="location.href='bookLoanRegister?loanId=${loan.loanId}'">
+										<tr onclick="location.href='${context }admin/bookLoanRegister?loanId=${loan.loanId}'">
 									</c:when>
 									<c:otherwise>
-										<tr onclick="location.href='bookLoanContent?loanId=${loan.loanId}'">
+										<tr onclick="location.href='${context }admin/bookLoanContent?loanId=${loan.loanId}'">
 									</c:otherwise>
 								</c:choose>
 									<td>${loan.loanId}</td>

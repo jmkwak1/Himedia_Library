@@ -24,22 +24,19 @@
 		parameterType="com.care.library.search.BookDTO">
 		INSERT INTO popularBook (ranking, publication_year, bookName, authors, publisher, bookImageURL, vol, isbn)
 		VALUES(#{ranking}, #{publicationYear},#{bookName}, #{authors}, #{publisher},
-		#{bookImageURL}, #{vol, jdbcType=VARCHAR}, #{isbn})
+		#{bookImageURL}, #{vol}, #{isbn})
 	</insert>
 
 	<insert id="recentInsert"
 		parameterType="com.care.library.search.BookDTO">
-		INSERT INTO recentBook (bookName,authors, publisher, bookImageURL, publication_year, vol, isbn)
-		VALUES(#{bookName}, #{authors}, #{publisher}, #{bookImageURL}, #{publicationYear}, #{vol,
-		jdbcType=VARCHAR}, #{isbn})
+		INSERT INTO recentBook (bookName, authors, publisher, bookImageURL, publication_year, vol, isbn)
+		VALUES(#{bookName}, #{authors}, #{publisher}, #{bookImageURL}, #{publicationYear}, #{vol}, #{isbn})
 	</insert>
 
 	<insert id="insertTotal"
 		parameterType="com.care.library.search.BookDTO">
-		INSERT INTO totalBook (bookName, authors, publisher,
-		bookImageURL, publication_year ,vol, isbn, rest_vol) VALUES(#{bookName},#{authors},
-		#{publisher}, #{bookImageURL}, #{publicationYear, jdbcType=VARCHAR}, #{vol,
-		jdbcType=VARCHAR}, #{isbn}, #{vol, jdbcType=VARCHAR})
+		INSERT INTO totalBook (bookName, authors, publisher, bookImageURL, publication_year ,vol, isbn, rest_vol) VALUES(#{bookName},#{authors},
+		#{publisher}, #{bookImageURL}, #{publicationYear}, #{vol}, #{isbn}, #{vol})
 	</insert>
 
 	<delete id="deleteData">
@@ -91,7 +88,7 @@
 
 	<!--통합검색 -->
 	<select id="totalSearch" resultMap="bookDto">
-  		SELECT BBB.* FROM(SELECT ROWNUM as rn, AAA.* FROM(SELECT * FROM totalBook WHERE LOWER(bookName) LIKE LOWER(CONCAT('%',#{search},'%')) ORDER BY total_id ASC)AAA)BBB WHERE rn BETWEEN #{begin} AND #{end}
+  		SELECT BBB.* FROM(SELECT ROWNUM() as rn, AAA.* FROM(SELECT * FROM totalBook WHERE LOWER(bookName) LIKE LOWER(CONCAT('%',#{search},'%')) ORDER BY total_id ASC)AAA)BBB WHERE rn BETWEEN #{begin} AND #{end}
 	</select>
 	
 	

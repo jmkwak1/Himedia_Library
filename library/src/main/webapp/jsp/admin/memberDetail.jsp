@@ -16,8 +16,8 @@
 			<h1>회원관리</h1>
 			<div class="mb_30 mt_20">
 				<a href="/main">HOME</a> > 
-				<a href="/member">관리자페이지</a> >
-				<a class="checked" href="/member">회원관리</a>
+				<a href="${context }admin/member">관리자페이지</a> >
+				<a class="checked" href="${context }admin/member">회원관리</a>
 			</div>
 		</div>
 		<div class="memberContainer">
@@ -84,7 +84,7 @@
 					</c:if>
 				</table>
 				<div>
-					<input type = "button" value = "돌아가기" onclick="location.href='memberList'" style = "margin-bottom:40px;">
+					<input type = "button" value = "돌아가기" onclick="location.href='${context }admin/memberList'" style = "margin-bottom:40px;">
 				</div>
 			</form>
 		</div>

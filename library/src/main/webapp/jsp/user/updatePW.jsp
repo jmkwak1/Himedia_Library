@@ -22,7 +22,7 @@
 		<span id="newPwMsg" ></span><br>
 		
 		<input type="button" class="registerBtn" value="비밀번호 변경" onclick="changePw()">
-		<input type="button" class="cancelBtn" value="취소" onclick="location.href='/myLibrary/myBookStatus'"><br>
+		<input type="button" class="cancelBtn" value="취소" onclick="location.href='${context }myLibrary/myBookStatus'"><br>
 	</form>
 	<script src = "${context }javaScript/myInfoUpate.js"></script>
 </body>

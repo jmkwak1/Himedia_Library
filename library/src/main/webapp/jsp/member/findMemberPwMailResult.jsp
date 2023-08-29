@@ -23,14 +23,14 @@
 		<div class="mb_30 mt_20">
 			<a href="/main">HOME</a> > 
 			<a href="/register">회원정보</a> >
-			<a class="checked" href="/findMemberId">아이디/비밀번호 찾기</a>
+			<a class="checked" href="${context }member/findMemberId">아이디/비밀번호 찾기</a>
 		</div>
 		<div class="find">
 			<div class = "findId">
-				<a href = "/findMemberId">아이디 찾기</a>
+				<a href = "${context }member/findMemberId">아이디 찾기</a>
 			</div>
 			<div class="findPw active">
-				<a href = "/findMemberPw">비밀번호 찾기</a>
+				<a href = "${context }member/findMemberPw">비밀번호 찾기</a>
 			</div>
 		</div>		
 		<div>
@@ -58,7 +58,7 @@
 							<td colspan = 2 align="center">
 								<div>
 									<input type = "submit" value = "변경">
-									<input type = "button" value = "취소" style = "margin-left:10px" onclick = "location.href='/login'">
+									<input type = "button" value = "취소" style = "margin-left:10px" onclick = "location.href='${context }member/login'">
 								</div>
 							</td>
 						</tr>

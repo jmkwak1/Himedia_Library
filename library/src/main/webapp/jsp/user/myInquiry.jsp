@@ -17,8 +17,8 @@
 				<h1>1:1문의</h1>
 				<div class="mb_30 mt_20">
 					<a href="/main">HOME</a> > 
-					<a href="/myLibrary">마이라이브러리</a> >
-					<a class="checked" href="/myLibrary/myInquiry">1:1문의</a>
+					<a href="${context }myLibrary">마이라이브러리</a> >
+					<a class="checked" href="${context }myLibrary/myInquiry">1:1문의</a>
 				</div>
 			</div>
 			<div class="inquiryContainer">
@@ -71,7 +71,7 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach var="inquiry" items = "${inquiries}">
-									<tr onclick = "location.href='/myLibrary/myInquiryContent?rn=${inquiry.rn}'">
+									<tr onclick = "location.href='${context }myLibrary/myInquiryContent?rn=${inquiry.rn}'">
 										<td>${inquiry.rn}</td>
 										<td>${inquiry.title }</td>
 										<td>
@@ -89,7 +89,7 @@
 						</c:choose>
 					</table>
 					<div class="inquiryBtn">
-						<input type = "button" value = "글쓰기" onclick="location.href='/myLibrary/myInquiryWriteForm'">
+						<input type = "button" value = "글쓰기" onclick="location.href='${context }myLibrary/myInquiryWriteForm'">
 					</div>
 					<div class="inquiryPage">
 						${result }

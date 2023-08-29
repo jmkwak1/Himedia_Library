@@ -130,7 +130,7 @@
 					${result}
 				</div>
 				<div class="loanBtn">
-					<input type = "button" value = "대출등록" onclick="location.href='bookLoanRegister'">
+					<input type = "button" value = "대출등록" onclick="location.href='${context }bookLoanRegister'">
 				</div>
 			</form>
 		</div>

@@ -33,8 +33,8 @@
 				<h1>1:1문의</h1>
 				<div class="mb_30 mt_20">
 					<a href="/main">HOME</a> > 
-					<a href="/adminMember">마이라이브러리</a> >
-					<a class="checked" href="/myInquiry">1:1문의</a>
+					<a href="${context }adminMember">마이라이브러리</a> >
+					<a class="checked" href="${context }myInquiry">1:1문의</a>
 				</div>
 			</div>
 			<div class="inquiryContainer">
@@ -59,7 +59,7 @@
 						</tr>
 					</table>
 					<div class="inquiryBtn">
-						<input type = "button" value = "목록" onclick="location.href='myInquiry'">
+						<input type = "button" value = "목록" onclick="location.href='${context }myInquiry'">
 						<input type = "button" value = "수정" onclick="writeChk()" >
 						<input type = "reset" value = "취소">
 					</div>

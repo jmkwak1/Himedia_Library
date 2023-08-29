@@ -35,8 +35,8 @@
 				<h1>1:1문의</h1>
 				<div class="mb_30 mt_20">
 					<a href="/main">HOME</a> > 
-					<a href="/adminMember">마이라이브러리</a> >
-					<a class="checked" href="/myInquiry">1:1문의</a>
+					<a href="${context }adminMember">마이라이브러리</a> >
+					<a class="checked" href="${context }myInquiry">1:1문의</a>
 				</div>
 			</div>
 			<div class="inquiryContainer">
@@ -62,7 +62,7 @@
 					</table>
 					<div class="inquiryBtn">
 						<input type = "button" value = "등록" onclick="writeChk()" >
-						<input type = "button" value = "목록" onclick="location.href='myInquiry'">
+						<input type = "button" value = "목록" onclick="location.href='${context }myInquiry'">
 					</div>
 				</form>
 			</div>

@@ -28,7 +28,7 @@
 		<input type="password" name="pw" id="pw" ><br>
 		
 		<input type="submit" class="withdrawBtn" value="회원탈퇴">
-		<input type="button" class="cancelBtn" value="취소" onclick="location.href='/myLibrary/myInfo'"><br>
+		<input type="button" class="cancelBtn" value="취소" onclick="location.href='${context }myLibrary/myInfo'"><br>
 	</form>
 	<script src = "${context }javaScript/myInfoUpate.js"></script>
 </body>

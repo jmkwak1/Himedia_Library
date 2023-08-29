@@ -14,8 +14,8 @@
 			<h1>회원관리</h1>
 			<div class="mb_30 mt_20">
 				<a href="/main">HOME</a> > 
-				<a href="/member">관리자페이지</a> >
-				<a class="checked" href="/member">회원관리</a>
+				<a href="${context }admin/member">관리자페이지</a> >
+				<a class="checked" href="${context }admin/member">회원관리</a>
 			</div>
 		</div>
 		<div class="memberContainer">
@@ -105,7 +105,7 @@
 				<div>
 					<input type = "button" value = "인증" onclick="certify()">
 					<input type = "button" value = "반려" onclick="rejectProc()">
-					<input type = "button" value = "취소" onclick="location.href='member'">
+					<input type = "button" value = "취소" onclick="location.href='${context }admin/member'">
 				</div>
 			</form>
 		</div>
