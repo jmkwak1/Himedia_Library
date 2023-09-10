@@ -20,40 +20,7 @@
 <link href="${context }css/kakaoRegister.css" rel="stylesheet"
 	type="text/css">
 <script src="${context }javaScript/registerInputInfo.js"></script>
-<script>
-	let message = "${msg}"; //"이미 일반 회원입니다."
-	let askIntegConfirm = "";
-	let integXhr;
-	if (message !== "") {
-		askIntegConfirm = confirm(message + "\n 카카오 로그인 서비스와 연동하시겠습니까?");
-		if (askIntegConfirm) {
-			integRegister();
-		}
-	}
 
-	function integRegister() {
-		integXhr = new XMLHttpRequest();
-		integXhr.open('post', 'integrate');
-		integXhr.send("${sessionScope.kakaoEmail}");
-
-		integXhr.onreadystatechange = integrateProc;
-	}
-	function integrateProc() {
-		if(integXhr.readyState === 4){
-			if (integXhr.status === 200) {
-				console.log(integXhr.responseText);
-				if (integXhr.responseText === "카카오 로그인 서비스 연동이 완료되었습니다.") {
-					console.log(integXhr.responseText);
-					alert(integXhr.responseText);
-					location.href="/login";
-				}
-			} else {
-				console.log('에러: ' + integXhr.status); // 요청 도중 에러 발생
-			}
-			
-		}
-	}
-</script>
 <div class="KRContainer">
 	<div class="KRContent">
 		<div class="logo">

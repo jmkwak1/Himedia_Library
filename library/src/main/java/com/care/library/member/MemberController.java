@@ -217,15 +217,13 @@ public class MemberController {
 			MemberDTO existedMember = service.emailExists(kakaoEmail);
 			//이메일로 회원 여부 확인 후 연동 여부 묻기.
 			if(existedMember != null) {
-				ra.addFlashAttribute("msg", "이미 일반 회원입니다.");
-				return "redirect:kakaoRegister";
+				ra.addFlashAttribute("integMessage", "이미 일반 회원입니다.");
+				return "redirect:login";
 			}else {
 				return "redirect:kakaoRegister";
 			}
 		}
 		
-		System.out.println(kakaoMember.getKakaoid());
-		//카카오 아이디로 로그인을 해야죠?
 		ra.addFlashAttribute("msg", "카카오 로그인 완료");
 		session.setAttribute("kakaoID", kakaoMember.getKakaoid());
 		session.setAttribute("id", kakaoMember.getId());
