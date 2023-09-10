@@ -44,6 +44,11 @@
 		VALUES(#{id}, #{pw}, #{name}, #{birth}, #{email}, #{address}, #{mobile}, #{proName}, #{status}, #{detailAddress}, #{postCode}, #{regDate})
 	</insert>
 	
+	<!-- 기존 일반 회원에 카카오 로그인 연동 -->
+	<update id="updateKakaoId">
+		UPDATE member SET kakaoid = #{kakaoID} WHERE email = #{kakaoEmail}
+	</update>
+	
 	<!-- 비밀번호 변경 -->
 	<update id="changePw">
 		UPDATE member SET pw = #{cryptPassword} WHERE id = #{authId}

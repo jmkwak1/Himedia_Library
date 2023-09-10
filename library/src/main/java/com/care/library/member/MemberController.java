@@ -38,7 +38,8 @@ public class MemberController {
 		System.out.println("paintPop : " + paintPop);
 
 		// 신착도서 대출
-		String recentParam = "&libCode=111042";
+		//String recentParam = "&libCode=111042";
+		String recentParam = "&libCode=111016";
 		String recentUrl = searchService.reqUrlParam("extends/libSrch", recentParam, 1, 10);
 		System.out.println("recentUrl" + recentUrl);
 		String recentTable = "recentBook";
@@ -47,8 +48,8 @@ public class MemberController {
 		System.out.println("paintRecent : " + paintRecent);
 		
 		// 전체 도서 db만들기
-		searchService.checkTotalDB();
-				
+		String totalDBResult = searchService.checkTotalDB();
+		
 		int closedRoom = reserveMapper.closeRoomStatus();
 		session.setAttribute("closedRoom", closedRoom); //닫혔다면 1이 들어갈것
 		return "default/header";
@@ -73,9 +74,11 @@ public class MemberController {
 	public String main(Model model) {
 		service.mainNotice(model);
 		service.mainReadingRoom(model);
-		searchService.getBookImages(model,"popularBook");
-		searchService.getBookImages(model,"recentBook");
-		
+		String getPopImage = searchService.getBookImages(model,"popularBook");
+		String getRecentImage = searchService.getBookImages(model,"recentBook");
+		if(getPopImage.equals("이미지 가져오기 완료") && getRecentImage.equals("이미지 가져오기 완료")){
+			return "default/main";
+		}
 		return "default/main";
 	}
 	
@@ -163,10 +166,11 @@ public class MemberController {
 	}
 	
 	@PostMapping("registerProc")
-	public String registerProc(MemberDTO member, String confirm, Model model) {
+	public String registerProc(MemberDTO member, String confirm, Model model, RedirectAttributes ra) {
 		String result = service.registerProc(member, confirm);
 		if(result.equals("회원 등록 완료")) {
 			System.out.println("회원 등록 완료 된듯");
+			ra.addFlashAttribute("msg", result);
 			return "redirect:login";
 		}
 		System.out.println("회원 등록 안됨");
@@ -187,16 +191,7 @@ public class MemberController {
 	@GetMapping("kakaoRegister")
 	public String kakaoRegister() {
 		// 일반 회원 여부 확인(이메일 중복 여부로 확인)
-		//String kakaoEmail = (String)session.getAttribute("kakaoEmail");
-		//MemberDTO existedMember = service.emailExists(kakaoEmail);
-//		if(existedMember != null) { //일반 회원
-//			//일반 회원이면 카카오 연동할꺼냐고 물어봐야지
-//			 //String alertScript = "<script>confirm('이미 일반 회원으로 등록되어 있습니다.');</script>";
-//			 //System.out.println(alertScript);
-//			 //카카오 연동한다. =>
-//			 //카카오 연동 안한다.
-//			return "redirect:main";
-//		}
+		
 		 //일반 회원 아니다. => 회원가입 진행시켜!
 		return "member/kakaoRegister";
 	}
@@ -217,8 +212,17 @@ public class MemberController {
 		System.out.println("code : " + code);
 		kakao.getAccessToken(code); //AccessToken으로 접근 권한 받기
 		MemberDTO kakaoMember = kakao.kakaoExist();
-		if(kakaoMember == null) 
-			return "redirect:kakaoRegister";
+		if(kakaoMember == null) { //카카오 회원이 아닌 경우
+			String kakaoEmail = (String)session.getAttribute("kakaoEmail");
+			MemberDTO existedMember = service.emailExists(kakaoEmail);
+			//이메일로 회원 여부 확인 후 연동 여부 묻기.
+			if(existedMember != null) {
+				ra.addFlashAttribute("msg", "이미 일반 회원입니다.");
+				return "redirect:kakaoRegister";
+			}else {
+				return "redirect:kakaoRegister";
+			}
+		}
 		
 		System.out.println(kakaoMember.getKakaoid());
 		//카카오 아이디로 로그인을 해야죠?
@@ -227,6 +231,18 @@ public class MemberController {
 		session.setAttribute("id", kakaoMember.getId());
 		session.setAttribute("name", kakaoMember.getName());
 		return "redirect:main";
+	}
+	
+	//일반 회원의 이메일과 카카오 이메일이 같을 경우 통합하여 가입.
+	@ResponseBody 
+	@PostMapping(value="integrate", produces = "text/plain; charset=UTF-8")
+	public String reqIntegrate(@RequestBody(required = false) String kakaoEmail) {
+		String kakaoID = (String)session.getAttribute("kakaoID");
+		MemberDTO existedMember = service.emailExists(kakaoEmail);
+		existedMember.setKakaoid(kakaoID);
+		kakao.integrateMember(kakaoEmail, kakaoID);
+		
+		return "카카오 로그인 서비스 연동이 완료되었습니다.";
 	}
 	
 	@GetMapping("kakaoLogout")

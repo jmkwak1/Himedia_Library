@@ -47,7 +47,7 @@ public class SearchService {
 	// 요청 URL 만들
 
 //	@Async
-	public void checkTotalDB() {
+	public String checkTotalDB() {
 		int numberOftotal = mapper.checkTotalDB();
 		if (numberOftotal < 40) {
 			ArrayList<BookDTO> popData = mapper.getTable("popularBook");
@@ -55,8 +55,10 @@ public class SearchService {
 			if (popData != null && recentData != null) {
 				insertBooks(popData, "totalBook");
 				insertBooks(recentData, "totalBook");
+				return "전체 도서 db가 완료되었습니다.";
 			}
 		}
+		return null;
 	}
 
 	public String reqUrlParam(String whichDataAPI, String restParam, int pageNo, int pageSize) {

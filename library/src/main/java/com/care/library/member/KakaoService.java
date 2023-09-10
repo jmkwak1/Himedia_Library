@@ -24,10 +24,12 @@ public class KakaoService {
 	private String scope;
 	private String RESTAPIKEY = "3f70e9cb27d96ef5a414516587c2cb5c";
 	private String redirectURI = "http://localhost/kakaoLogin";
-	
-	@Autowired MemberMapper memberMapper;
-	@Autowired private HttpSession session;
-	
+
+	@Autowired
+	MemberMapper memberMapper;
+	@Autowired
+	private HttpSession session;
+
 	public void getAccessToken(String code) {
 		/*
 		 * # 액세스 토큰 가져오기 #
@@ -36,8 +38,8 @@ public class KakaoService {
 		 */
 		String reqUrl = "https://kauth.kakao.com/oauth/token";
 		String reqParam = "grant_type=authorization_code";
-		reqParam += "&client_id="+RESTAPIKEY;
-		reqParam += "&redirect_uri="+redirectURI;
+		reqParam += "&client_id=" + RESTAPIKEY;
+		reqParam += "&redirect_uri=" + redirectURI;
 		reqParam += "&code=" + code;
 
 		HttpURLConnection conn;
@@ -64,8 +66,8 @@ public class KakaoService {
 			});
 			accessToken = map.get("access_token");
 			scope = map.get("scope"); // client의 정보 공개 선택 사항.
-			
-			//setNeedsAgreement();
+
+			// setNeedsAgreement();
 //			System.out.println("access_token : " + map.get("access_token"));
 //			System.out.println("scope : " + map.get("scope"));
 
@@ -84,19 +86,20 @@ public class KakaoService {
 		}
 
 	}
-	
+
 	public void setNeedsAgreement() {
-	/*
-	 * # 추가 항목 동의 받기 #
-	 * https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api#request-code-additional-consent
-	 */
-	//https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=account_email,gender	
-	
+		/*
+		 * # 추가 항목 동의 받기 #
+		 * https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api#request-code-
+		 * additional-consent
+		 */
+		// https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=account_email,gender
+
 		String reqUrl = "https://kauth.kakao.com/oauth/authorize";
-		String reqParam = "?client_id="+RESTAPIKEY;
-		reqParam += "&redirect_uri="+redirectURI;
-		reqParam += "&response_type=code&scope="+scope;
-		
+		String reqParam = "?client_id=" + RESTAPIKEY;
+		reqParam += "&redirect_uri=" + redirectURI;
+		reqParam += "&response_type=code&scope=" + scope;
+
 		HttpURLConnection conn;
 		try {
 			URL url = new URL(reqUrl); // POST 요청에 필요로 요구하는 파라미터 스트림을 통해 전송
@@ -136,45 +139,47 @@ public class KakaoService {
 			JsonNode jsonTree = om.readTree(conn.getInputStream());
 
 			JsonNode kakaoAccount = jsonTree.get("kakao_account");
-			
+
 			String kakaoEmail = kakaoAccount.get("email").toString().replace("\"", "");
-			//System.out.println("email : " + kakaoAccount.get("email"));
-			
-			//카카오 회원가입시 정보를 추가 입력하도록하여 일반 도서관 회원으로 가입시킬 예정.
-			//String kakaoID = email.replace("\"", "").split("@")[0];
+			// System.out.println("email : " + kakaoAccount.get("email"));
+
+			// 카카오 회원가입시 정보를 추가 입력하도록하여 일반 도서관 회원으로 가입시킬 예정.
+			// String kakaoID = email.replace("\"", "").split("@")[0];
 			String kakaoID = jsonTree.get("id").toString();
 			System.out.println("kakaoID : " + kakaoID);
-			
-			MemberDTO kakaoUserInfo = new MemberDTO(); //사실상 이메일과, 카카오아이디만 받을 수 있음.
+
+			MemberDTO kakaoUserInfo = new MemberDTO(); // 사실상 이메일과, 카카오아이디만 받을 수 있음.
 			kakaoUserInfo.setEmail(kakaoEmail);
 			kakaoUserInfo.setKakaoid(kakaoID);
 			return kakaoUserInfo;
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
+
 	public MemberDTO kakaoExist() {
+		//카카오에서 주는 회원 정보.
 		MemberDTO kakaoUserInfo = getUserInfo();
-		
+		session.setAttribute("kakaoEmail", kakaoUserInfo.getEmail()); // 일반회원 여부 알기위해서 필요함
+		session.setAttribute("kakaoID", kakaoUserInfo.getKakaoid()); 
+
 		// 카카오 회원 연동 여부 확인하기.(카카오에서 주는 kakaoID로 중복 확인)
 		MemberDTO kakaoMember = memberMapper.kakaoIDCheck(kakaoUserInfo.getKakaoid());
 		// 카카오 회원 O => 로그인 진행
-		if(kakaoMember != null) {
-			session.setAttribute("kakaoEmail", kakaoUserInfo.getEmail()); //일반회원 여부 알기위해서 필요함
+		if (kakaoMember != null) {
 			return kakaoMember;
 		}
-		// 카카오 회원 X (= 카카오 회원가입 X), 
+		// 카카오 회원 X (= 카카오 회원가입 X),
 		return null;
 	}
-	
+
 	public String kakaoRegisterProc(MemberDTO member, String confirm) {
 		MemberDTO kakaoUserInfo = getUserInfo();
 		System.out.println(kakaoUserInfo.getKakaoid());
-		// 카카오 회원 연동 여부 확인하기.(카카오에서 주는 kakaoID로 중복 확인)
-		MemberDTO kakaoIDCheck = memberMapper.kakaoIDCheck(kakaoUserInfo.getKakaoid());
+		// MemberDTO kakaoIDCheck =
+		// memberMapper.kakaoIDCheck(kakaoUserInfo.getKakaoid());
 //		// 카카오 회원 X (= 카카오 회원가입 X), 
 //		if(kakaoUserExist.equals("카카오 회원이 아닙니다.")) {
 //			// 일반 회원 여부 확인(이메일 중복 여부로 확인 - 명확한 것은 아님. 이메일 수정 가능하니까)
@@ -208,21 +213,22 @@ public class KakaoService {
 //		
 //		
 //		
-		//MemberDTO result = memberMapper.loginProc(member.getId());
-		if(kakaoIDCheck == null) {
-			//String kakaoID = (String)session.getAttribute("kakaoID");
-			//String kakaoEmail = (String)session.getAttribute("kakaoEmail");
-			BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
-			String cryptPassword = bpe.encode(member.getPw());
-			member.setPw(cryptPassword);
-			member.setEmail(kakaoUserInfo.getEmail());
-			member.setKakaoid(kakaoUserInfo.getKakaoid());
-			member.setStatus("D");
-			memberMapper.kakaoRegisterProc(member);
+
+		BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
+		String cryptPassword = bpe.encode(member.getPw());
+		member.setPw(cryptPassword);
+		member.setEmail(kakaoUserInfo.getEmail());
+		member.setKakaoid(kakaoUserInfo.getKakaoid());
+		member.setStatus("D");
+		int registerResult = memberMapper.kakaoRegisterProc(member);
+		if(registerResult == 1)
 			return "회원 등록 완료";
-		}
-		
+
 		return "이미 가입된 아이디 입니다.";
+	}
+	
+	public void integrateMember(String kakaoEmail, String kakaoID) {
+		memberMapper.updateKakaoId(kakaoEmail, kakaoID);
 	}
 	
 	public void unLink() {
@@ -233,7 +239,7 @@ public class KakaoService {
 		String reqUrl = "https://kapi.kakao.com/v1/user/unlink";
 		HttpURLConnection conn;
 		try {
-			URL url = new URL(reqUrl); 
+			URL url = new URL(reqUrl);
 			conn = (HttpURLConnection) url.openConnection();
 
 			conn.setRequestMethod("POST");
@@ -252,16 +258,3 @@ public class KakaoService {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
