@@ -34,20 +34,32 @@
 						<c:choose>
 							<c:when test = "${empty myLoanHistory}">
 								<tr>
-									<td colspan = 5 style = "cursor:default; color:#000;">
+									<td colspan = 4 style = "cursor:default; color:#000;">
 										대출 이력이 없습니다.
 									</td>
 								</tr>
 							</c:when>
 							<c:otherwise>
 								<c:forEach var="history" items = "${myLoanHistory}">
-									<tr <%-- onclick="location.href='inquiryContent?no=${inquiry.no}'" --%>>
+									<tr>
 										<td>${history.bookName}</td>
 										<td>${history.startDate}</td>
 										<td>${history.endDate}</td>
 										<td> 
+											<c:if test="${history.status == 'R'}">
+												예약
+											</c:if>
+											<c:if test="${history.status == 'L'}">
+												대출
+											</c:if>
+											<c:if test="${history.status == 'LE'}">
+												대출(연장)
+											</c:if>
+											<c:if test="${history.status == 'O'}">
+												연제
+											</c:if>
 											<c:if test="${history.status == 'C'}">
-												반납 완료
+												반납완료
 											</c:if>
 										</td>
 									</tr>

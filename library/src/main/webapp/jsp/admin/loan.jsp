@@ -49,26 +49,38 @@
 					<input type = "submit" id="loanSearchBtn" value = "검색" onclick="loanSearch()" >
 				</div>
 				<table class="inquiry">
-					<tr>
-						<th>번호</th>
-						<th>책제목</th>
-						<th>대출자</th>
-						<c:choose>
-							<c:when test="${param.select == null || (param.select == 'status' && param.loanStatusSelect == 'R')}">
-								<th>대출예약일</th>
-							</c:when>
-							<c:when test = "${param.select == 'status' && param.loanStatusSelect == 'C' }">
-								<th>반납일</th>
-							</c:when>
-							<c:when test = "${param.select ==  'status' && param.loanStatusSelect == 'T'}">
+					<c:choose>
+						<c:when test = "${param.select == 'id' || param.select == 'title' }">
+							<tr>
+								<th>번호</th>
+								<th>책제목</th>
+								<th>대출자</th>
 								<th>상태</th>
-							</c:when>
-							<c:otherwise>
-								<th>대출시작일</th>
-								<th>반납예정일</th>
-							</c:otherwise>
-						</c:choose>
-					</tr>
+							</tr>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<th>번호</th>
+								<th>책제목</th>
+								<th>대출자</th>
+								<c:choose>
+									<c:when test="${param.select == null || (param.select == 'status' && param.loanStatusSelect == 'R')}">
+										<th>대출예약일</th>
+									</c:when>
+									<c:when test = "${param.select == 'status' && param.loanStatusSelect == 'C' }">
+										<th>반납일</th>
+									</c:when>
+									<c:when test = "${param.select ==  'status' && param.loanStatusSelect == 'T'}">
+										<th>상태</th>
+									</c:when>
+									<c:otherwise>
+										<th>대출시작일</th>
+										<th>반납예정일</th>
+									</c:otherwise>
+								</c:choose>
+							</tr>
+						</c:otherwise>
+					</c:choose>
 					<c:choose>
 						<c:when test = "${empty loans}">
 							<tr>
@@ -115,6 +127,25 @@
 										</c:when>
 										<c:when test = "${param.select == 'status' && param.loanStatusSelect == 'C'}">
 											<td>${loan.returnDate}</td>
+										</c:when>
+										<c:when test = "${param.select == 'id' || param.select == 'title' }">
+											<td>
+												<c:if test ="${loan.status == 'R'}">
+													예약중
+												</c:if>
+												<c:if test ="${loan.status == 'L'}">
+													대출중
+												</c:if>
+												<c:if test ="${loan.status == 'LE'}">
+													대출중(연장)
+												</c:if>
+												<c:if test ="${loan.status == 'O'}">
+													연체중
+												</c:if>
+												<c:if test ="${loan.status == 'C'}">
+													반납완료
+												</c:if>
+											</td>
 										</c:when>
 										<c:otherwise>
 											<td>${loan.startDate }</td>

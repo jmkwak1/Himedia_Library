@@ -202,6 +202,40 @@ public class AdminService {
 		model.addAttribute("currentPage", currentPage);
 	}
 	
+	public void selectLoanSearch(String cp, String select, String search, Model model) {
+		int currentPage = 1;
+		try{
+			currentPage = Integer.parseInt(cp);
+		}catch(Exception e){
+			currentPage = 1;
+		}
+		
+		int pageBlock = 5; // 한 페이지에 보일 데이터의 수 
+		int end = pageBlock * currentPage; // 테이블에서 가져올 마지막 행번호
+		int begin = end - pageBlock + 1; // 테이블에서 가져올 시작 행번호
+		
+		ArrayList<BookLoanDTO> loans = new ArrayList<>();
+		int totalCount;
+		String url;
+		
+		if(select.equals("id")) {
+			totalCount = mapper.countLoanId(search);
+			loans = mapper.selectLoanId(search, begin, end);
+			url = "book?select=id&search="+search+"&currentPage=";
+		} else {
+			totalCount = mapper.countLoanTitle(search);
+			loans = mapper.selectLoanTitle(search, begin, end);
+			url = "book?select=title&search="+search+"&currentPage=";
+		}
+		
+		String result = PageService.printPage(url, currentPage, totalCount, pageBlock);
+
+		model.addAttribute("loans", loans);
+		model.addAttribute("result", result);
+		model.addAttribute("currentPage", currentPage);
+	}
+
+	
 	//대출 등록 - 예약신청 들어온 것 내역 불러오기
 	public void loanRegister(String loanId, Model model) {
 		BookLoanDTO reserve = mapper.loanRegisterSelect(loanId);
@@ -365,5 +399,6 @@ public class AdminService {
 		notification.setUrl("/myLibrary/myInquiry");
 		notiService.register(notification);
 	}
+
 
 }

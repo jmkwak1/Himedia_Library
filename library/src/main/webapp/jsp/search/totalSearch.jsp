@@ -98,7 +98,7 @@
 											<td>${result.isbn}</td>
 											<c:choose>
 												<c:when test="${empty sessionScope.id }">
-													<td class="impossible" onclick="location.href='/login'">로그인
+													<td class="impossible" onclick="location.href='${context}login'">로그인
 														필요</td>
 												</c:when>
 												<c:when test="${result.restVol < 1 }">

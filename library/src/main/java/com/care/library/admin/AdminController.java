@@ -125,6 +125,8 @@ public class AdminController {
 			} else {
 				service.selectLoan(cp, select, loanStatusSelect, model);
 			}
+		} else {
+			service.selectLoanSearch(cp, select, search, model);
 		}
 		return "admin/loan";
 	}

@@ -107,6 +107,7 @@
 	
 	
 	<resultMap type="com.care.library.search.BookLoanDTO" id="bookLoanDto"> <!-- id는 식별자일뿐 -->
+		<result column="loan_id" property="loanId" />
 		<result column="user_id" property="userId" />
 		<result column="start_date" property="startDate" />
 		<result column="end_date" property="endDate" />
@@ -119,6 +120,11 @@
 		values(#{userId}, #{bookName}, #{isbn}, 'R', #{reserveDate})
 	</insert>
 	
+	<!-- 대출 예약 취소 -->
+	<delete id ="reserveCancel">
+		DELETE bookLoan WHERE loan_id = #{loanId}
+	</delete>
+	
 	<!-- 알림을 위해 관리자 찾기 -->
 	<select id = "findAdmin" resultType = "com.care.library.member.MemberDTO">
 		SELECT * FROM member WHERE status = 'M'
@@ -130,13 +136,13 @@
 	</select>
 	
   	<select id="getMyBookStatus" resultMap="bookLoanDto">
-	    SELECT bookLoan.bookName, bookLoan.start_date, bookLoan.end_date, bookLoan.status ,bookLoan.isbn FROM bookLoan 
+	    SELECT * FROM bookLoan 
 	    WHERE user_id = #{userId} AND (status='R' OR status='L' OR status='O' OR status='LE')
+	    ORDER BY loan_id DESC
 	</select>
 	
 	<select id="getMyLoanHistory" resultMap="bookLoanDto">
-	    SELECT bookLoan.bookName, bookLoan.start_date, bookLoan.end_date, bookLoan.status FROM bookLoan 
-	    WHERE user_id = #{userId} AND status='C'
+	    SELECT * FROM bookLoan WHERE user_id = #{userId}
 	</select>
 	
 	<!-- 대출 연장하기 -->

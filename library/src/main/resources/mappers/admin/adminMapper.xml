@@ -93,6 +93,22 @@
 		SELECT count(loan_id) FROM bookLoan
 	</select>
 	
+	<select id ="countLoanId">
+		SELECT count(loan_id) FROM bookLoan WHERE user_id like '%'||#{search}||'%' 
+	</select>
+	
+	<select id = "selectLoanId" resultMap="bookLoanDto">
+		SELECT BBB.* FROM(SELECT rownum as rn, AAA.* FROM (SELECT * FROM bookLoan WHERE user_id like '%'||#{search}||'%' ORDER BY loan_id DESC)AAA)BBB WHERE rn BETWEEN #{begin} AND #{end}
+	</select>
+	
+	<select id ="countLoanTitle">
+		SELECT count(loan_id) FROM bookLoan WHERE bookName like '%'||#{search}||'%' 
+	</select>
+
+	<select id = "selectLoanTitle" resultMap="bookLoanDto">
+		SELECT BBB.* FROM(SELECT rownum as rn, AAA.* FROM (SELECT * FROM bookLoan WHERE bookName like '%'||#{search}||'%' ORDER BY loan_id DESC)AAA)BBB WHERE rn BETWEEN #{begin} AND #{end}
+	</select>
+
 	<select id="loanRegisterSelect" resultMap="bookLoanDto">
 		SELECT * FROM bookLoan WHERE loan_id = #{loanId}
 	</select>

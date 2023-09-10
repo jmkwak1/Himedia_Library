@@ -1,8 +1,8 @@
-<script src = "/dbLibrary.js"></script>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:url var="context" value="/"/>
+<script src = "${context}dbLibrary.js"></script>
 <link href="${context }css/main.css" rel="stylesheet" type="text/css">
 <link href="${context }css/container.css" rel="stylesheet" type="text/css">
 

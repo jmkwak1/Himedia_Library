@@ -48,6 +48,13 @@ public class UserController {
 		return "user/myBookStatus";
 	}
 	
+	// 대출 예약 취소
+	@RequestMapping("myLibrary/reserveCancel")
+	public String reserveCancel(String loanId) {
+		service.reserveCancel(loanId);
+		return "redirect:myBookStatus";
+	}
+	
 	// 대출 이력 조회
 	@RequestMapping("myLibrary/myLoanHistory")
 	public String myLoanHistory(Model model) {
@@ -55,6 +62,22 @@ public class UserController {
 		service.getMyLoanHistory(id,model);
 		
 		return "user/myLoanHistory";
+	}
+	
+	@RequestMapping("/myLibrary/myProgram")
+	public String myProgram(Model model) {
+		String id = (String)session.getAttribute("id");
+		service.getMyProgram(id, model);
+		
+		return "user/myProgram";
+	}
+	
+	@RequestMapping("/myLibrary/myPay")
+	public String myPay(Model model) {
+		String id = (String)session.getAttribute("id");
+		service.getMyPay(id, model);
+		
+		return "user/myPay";
 	}
 	
 	

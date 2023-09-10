@@ -102,7 +102,18 @@
 	      document.getElementById("subMyInquiry").classList.add("active");
 	      document.getElementById("subMyBookStatus").classList.remove("active");
 	      document.getElementById("subMyInfo").classList.remove("active");
-    }else if(currentURL.includes("LoanHistory")){
+    }else if(currentURL.includes("myProgram")){
+	      document.getElementById("subMyProgram").classList.add("active");
+	      document.getElementById("subMyBookStatus").classList.remove("active");
+	      document.getElementById("subMyInfo").classList.remove("active");
+	      document.getElementById("subMyInquiry").classList.remove("active");
+	}else if(currentURL.includes("myPay")){
+	      document.getElementById("subMyPay").classList.add("active");
+	      document.getElementById("subMyBookStatus").classList.remove("active");
+	      document.getElementById("subMyInfo").classList.remove("active");
+	      document.getElementById("subMyInquiry").classList.remove("active");
+	}
+    else if(currentURL.includes("LoanHistory")){
 		 document.getElementById("subMyLoanHistory").classList.add("active");
 		  document.getElementById("subMyInfo").classList.remove("active");
 		   document.getElementById("subMyBookStatus").classList.remove("active");

@@ -51,4 +51,6 @@ public interface SearchMapper {
 	
 	MemberDTO findAdmin();
 
+	void reserveCancel(String loanId);
+
 }

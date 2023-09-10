@@ -65,7 +65,7 @@
 							<c:when test = "${empty inquiries}">
 								<tr>
 									<td colspan = 4 style = "cursor:default; color:#000;">
-										등록한 문의가 없습니다.
+										조회된 문의가 없습니다.
 									</td>
 								</tr>
 							</c:when>

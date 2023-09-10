@@ -95,7 +95,7 @@
 				<input type="text" id="regDate" name="regDate" style="display: none;"><br>
 				
 				<input type="button" class="registerBtn" value="회원가입" onclick="allCheck()">
-				<input type="button" class="cancelBtn" value="취소" onclick="location.href='register2'"><br>
+				<input type="button" class="cancelBtn" value="취소" onclick="location.href='${context}register2'"><br>
 			</form>
 		</div>
 		

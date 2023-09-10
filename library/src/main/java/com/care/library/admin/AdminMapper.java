@@ -43,6 +43,14 @@ public interface AdminMapper {
 
 	int countLoanAll();
 
+	int countLoanId(String search);
+
+	ArrayList<BookLoanDTO> selectLoanId(String search, int begin, int end);
+
+	int countLoanTitle(String search);
+
+	ArrayList<BookLoanDTO> selectLoanTitle(String search, int begin, int end);
+
 	BookLoanDTO loanRegisterSelect(String loanId);
 
 	ArrayList<BookDTO> selectAllBook();

@@ -397,7 +397,7 @@ public class SearchService {
 			notification.setId(loanData.getUserId());
 			notification.setCategory("도서");
 			notification.setTitle("도서 대출 예약 신청이 완료되었습니다.");
-			notification.setUrl("/myLibrary/loanStatus");
+			notification.setUrl("/myLibrary/myBookStatus");
 			notiService.register(notification);
 			
 			NotifyDTO adminNotification = new NotifyDTO();

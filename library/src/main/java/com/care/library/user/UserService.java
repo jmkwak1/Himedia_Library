@@ -255,6 +255,22 @@ public class UserService {
 		extMsg = "연장 신청이 완료되었습니다.";
 		model.addAttribute("extMsg",extMsg);
 	}
+
+
+	public void reserveCancel(String loanId) {
+		searchMapper.reserveCancel(loanId);
+	}
+
+	public void getMyProgram(String id, Model model) {
+		// 프로그램 내역 가져오기 만들어야 됨
+	}
+
+
+	public void getMyPay(String id, Model model) {
+		// 결제내역 가져오기 만들어야 됨
+		
+	}
+
 }
 
 
