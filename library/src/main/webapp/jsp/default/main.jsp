@@ -152,9 +152,9 @@
 					<div class="restSeat">금일 열람실 현황(잔여 좌석수)</div>
 					<div class="roomStatus">
 						<ul>
-							<li onclick="headerReseve('${sessionScope.closedRoom}')"><span>1열람실</span>
+							<li onclick="headerReseve(1,'${sessionScope.closedRoom}')"><span>1열람실</span>
 								<div>${R1Seat}석</div></li>
-							<li onclick="headerReseve('${sessionScope.closedRoom}')"><span>2열람실</span>
+							<li onclick="headerReseve(2,'${sessionScope.closedRoom}')"><span>2열람실</span>
 								<div>${R2Seat}석</div></li>
 							<li onclick="headerReseve('${sessionScope.closedRoom}')"><span>스터디룸</span>
 								<div>0석</div></li>

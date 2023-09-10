@@ -40,10 +40,14 @@ window.addEventListener('scroll', function () {
 });
 
 
-function headerReseve(closedRoom){
+function headerReseve(roomNum, closedRoom){
+	event.stopPropagation(); // 이벤트 전파 중단
 	if(closedRoom == 1){
 		alert("열람실 예약 가능한 시간이 아닙니다.");
 	}else{
-		location.href="/reservation/readingRoom1";
+		if(roomNum === 1)
+			location.href="/reservation/readingRoom1";
+		else if(roomNum === 2)
+			location.href="/reservation/readingRoom2";
 	}
 }

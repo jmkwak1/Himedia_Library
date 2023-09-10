@@ -98,10 +98,10 @@
 						<li><a href="#" class="menu">큐레이션</a></li>
 					</ul>
 	            </li>
-	            <li class="reservation" onclick="headerReseve('${sessionScope.closedRoom}')">좌석예약
+	            <li class="reservation" onclick="headerReseve(1,'${sessionScope.closedRoom}')">좌석예약
 	            	<ul class="toggleBox">
-						<li>자율학습실1</li>
-						<li>자율학습실2</li>
+						<li onclick="headerReseve(1,'${sessionScope.closedRoom}')">자율학습실1</li>
+						<li onclick="headerReseve(2,'${sessionScope.closedRoom}')">자율학습실2</li>
 						<li>스터디룸</li>
 					</ul>
 	            </li>
