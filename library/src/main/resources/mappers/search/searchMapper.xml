@@ -16,7 +16,8 @@
   	
 	<!-- 검색 전 모든 책 보여주기 -->
 	<select id="getTotal" resultMap="bookDto">
-		SELECT A.* FROM (SELECT * FROM totalBook ORDER BY total_id ASC)A WHERE A.total_id BETWEEN #{begin} AND #{end}
+		<!-- SELECT A.* FROM (SELECT * FROM totalBook ORDER BY total_id ASC)A WHERE A.total_id BETWEEN #{begin} AND #{end} -->
+		SELECT B.* FROM (SELECT ROWNUM as rn, A.* FROM (SELECT * FROM totalBook ORDER BY total_id ASC)A)B WHERE rn BETWEEN #{begin} AND #{end}
 	</select>
 
 
@@ -63,6 +64,17 @@
 		</if>
 		<if test="whichTable == 'recentBook'">
 			SELECT bookImageURL FROM recentBook
+		</if>
+	</select>
+	
+	<select id="getBookInfo" resultMap="bookDto">
+		<if test="whichTable == 'popularBook'">
+			<!-- SELECT bookImageURL FROM popularBook WHERE no <![CDATA[ <= ]]> 5 -->
+			SELECT bookImageURL,isbn FROM (SELECT bookImageURL, isbn, ROWNUM AS rn FROM popularBook ORDER BY TO_NUMBER(ranking) ASC)A WHERE A.rn <![CDATA[ <= ]]>
+			5
+		</if>
+		<if test="whichTable == 'recentBook'">
+			SELECT bookImageURL,isbn FROM recentBook
 		</if>
 	</select>
 

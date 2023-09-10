@@ -74,9 +74,11 @@ public class MemberController {
 	public String main(Model model) {
 		service.mainNotice(model);
 		service.mainReadingRoom(model);
-		String getPopImage = searchService.getBookImages(model,"popularBook");
-		String getRecentImage = searchService.getBookImages(model,"recentBook");
-		if(getPopImage.equals("이미지 가져오기 완료") && getRecentImage.equals("이미지 가져오기 완료")){
+		//String getPopImage = searchService.getBookImages(model,"popularBook");
+		//String getRecentImage = searchService.getBookImages(model,"recentBook");
+		String getPopInfo = searchService.getBookInfo(model,"popularBook");
+		String getRecentIfo = searchService.getBookInfo(model,"recentBook");
+		if(getPopInfo.equals("책 정보 가져오기 완료") && getRecentIfo.equals("책 정보 가져오기 완료")){
 			return "default/main";
 		}
 		return "default/main";

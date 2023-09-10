@@ -283,13 +283,25 @@ public class SearchService {
 		if (bookImages.isEmpty() || bookImages == null) { // null로 구분하면 안됨. 빈 거(isEmpty())랑 null은 다른것임.
 			return "이미지 가져오기 실패";
 		}
+		
 		model.addAttribute(modelName, bookImages);
 		model.addAttribute(modelName+"Num", bookImages.size());
 		return "이미지 가져오기 완료";
 	}
+	
+	public String getBookInfo(Model model, String whichTable) {
+		String modelName = whichTable;
+		ArrayList<BookDTO> bookInfo = mapper.getBookInfo(whichTable);
+		if (bookInfo.isEmpty() || bookInfo == null) { // null로 구분하면 안됨. 빈 거(isEmpty())랑 null은 다른것임.
+			return "책 정보 가져오기 실패";
+		}
+		model.addAttribute(modelName, bookInfo);
+		return "책 정보 가져오기 완료";
+	}
 
 	public String showMainImages(String whichTable, Model model, String url, String xmlTagName) {
-		String dbResult = getBookImages(model, whichTable);
+		//String dbResult = getBookImages(model, whichTable);
+		String dbResult = getBookInfo(model, whichTable);
 		String Msg = "";
 		if (dbResult.equals("이미지 가져오기 완료")) {
 			return "데이터 베이스에 이미 저장 되어있습니다.";
@@ -301,7 +313,8 @@ public class SearchService {
 				if (bookList != null) {
 					String insertResult = insertBooks(bookList, whichTable);
 					if (insertResult.equals("모든 데이터가 입력되었습니다.")) {
-						getBookImages(model, whichTable);
+						//getBookImages(model, whichTable);
+						getBookInfo(model, whichTable);
 						// 전체 테이블에 넣기(비동기적으로...는 언젠가 해보자)
 						Msg = "모든 데이터가 입력되었습니다.";
 					}

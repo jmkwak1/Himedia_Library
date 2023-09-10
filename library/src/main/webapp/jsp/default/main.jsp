@@ -55,10 +55,10 @@
 							<span>인기도서</span>
 						</div>
 						<div class="bookContainer">
-							<c:forEach var="image" items="${popularBook}" varStatus="loop">
+							<c:forEach var="bookInfo" items="${popularBook}" varStatus="loop">
 								<c:if test="${loop.index < 4}">
-									<div class="bookImageBox">
-										<img src="${image}">
+									<div class="bookImageBox" onclick="location.href='/datasearch/bookDetail?isbn=${bookInfo.isbn}'">
+										<img src="${bookInfo.bookImageURL}">
 									</div>
 								</c:if>
 							</c:forEach>
@@ -75,10 +75,10 @@
 							<span>신착도서</span>
 						</div>
 						<div class="bookContainer">
-							<c:forEach var="image" items="${recentBook}" varStatus="loop">
+							<c:forEach var="bookInfo" items="${recentBook}" varStatus="loop">
 								<c:if test="${loop.index < 4}">
-									<div class="bookImageBox">
-										<img src="${image}">
+									<div class="bookImageBox" onclick="location.href='/datasearch/bookDetail?isbn=${bookInfo.isbn}'">
+										<img src="${bookInfo.bookImageURL}">
 									</div>
 								</c:if>
 							</c:forEach>

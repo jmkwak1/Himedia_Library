@@ -23,6 +23,8 @@ public interface SearchMapper {
 	
 	ArrayList<String> getBookImages(String whichTable);
 	
+	ArrayList<BookDTO> getBookInfo(String whichTable);
+	
 	int checkTotalDB();
 	
 	int checkSearchCount(String search);
