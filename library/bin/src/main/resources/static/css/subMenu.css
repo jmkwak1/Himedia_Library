@@ -1,15 +1,19 @@
 .inner{width:240px;}
-.subMenu{width:240px; margin-left :-20px; background-color: #fff;}
+.subMenu{width:240px; background-color: #fff;}
 
 .subMenu h2{height:164px; line-height:164px; font-size:24px; font-weight:400; 
 text-align:center; border:1px solid #ddd;
 background-image:url(../image/tit_bg.jpg);
 }
 .subMenu ul li{width:240px; font-size:18px;}
-.subMenu ul li a{display:block; padding:20px 0; text-align:center; border:1px solid #ddd; border-top:0; color:#000}
-.subMenu ul li a:hover{background:#338cfa; color:#fff; text-decoration: none;}
-.subMenu ul li a.active{background:#338cfa; color:#fff;}
+.subMenu ul li a{display:block; padding:20px 0; text-align:center; border:1px solid #ddd; border-top:0; color:#000;}
+.subMenu ul li a:hover{background:#338cfa; color:#fff; text-decoration: none;cursor: pointer;}
 
+.subMenu ul li a.active {background:#338cfa; color:#fff;}
 
-.active {background:#338cfa; color:#fff;}
-.login{background:#338cfa; color:#fff;}
+/*마이라이브러리 - subMenu*/
+.subMyLibrary ul li.active a{background:#338cfa; color:#fff;}
+.subMyLibrary ul li{width:240px; font-size:18px;display:block; /*padding:20px 0; */
+text-align:center; /*border:1px solid #ddd;*/ border-top:0; color:#000; }
+.subMyLibrary ul li:hover{background:#338cfa; color:#fff; text-decoration: none; cursor: pointer;}
+.subMyLibrary ul li.active {background:#338cfa; color:#fff;}

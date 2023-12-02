@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.care.library.user.UserMapper">
+	<resultMap type="com.care.library.user.UserDTO" id="userDto"> <!-- id는 식별자일뿐 -->
+  		<result column = "pro_name" property = "proName"/>
+  		<result column = "reg_date" property = "regDate"/>
+  		<result column = "post_code" property = "postCode"/>
+  		<result column = "detail_address" property = "detailAddress"/>
+  		<result column = "auth_date" property = "authDate"/>
+  	</resultMap>
+
+	<!--  마이 라이브러리 회원정보 수정  -->
+	<select id="getMyInfo" resultMap="userDto">
+		SELECT * FROM member WHERE id = #{id}
+	</select>
+	
+	<update id="changeMyInfoProc">
+		UPDATE member SET birth = #{birth}, email = #{email}, address = #{address}, mobile = #{mobile}, detail_address = #{detailAddress}, 
+		post_code = #{postCode} WHERE id = #{id}
+	</update>
+	
+	<select id="currentPwCheck">
+		SELECT pw FROM member WHERE id = #{id}
+	</select>
+	
+	<update id="updatePw">
+		UPDATE member SET pw = #{newPW} WHERE id = #{id}
+	</update>
+	
+	<update id="updateAuth">
+		UPDATE member SET status = 'R', auth_date = #{authDate} WHERE id = #{id}
+	</update>
+	
+	<!-- 회원탈퇴 (게시글 및 리뷰 보존을 위해 아이디를 난수로 변경, 기타 개인정보는 null) -->
+	<update id = "updateId">
+		UPDATE member SET id = #{delId}, name = '', pro_name = '', birth = '', email = '', post_code = '', address = '', detail_address = '', mobile = '', reg_date='', status = 'W', kakaoid='', auth_date = '', paper = '', user_group = '', reject = '' WHERE id = #{id}
+	</update>
+
+	
+	<!-- 1:1문의 관련 -->
+	<resultMap type="com.care.library.user.InquiryDTO" id="inquiryDto"> <!-- id는 식별자일뿐 -->
+  		<result column = "write_date" property = "writeDate"/>
+  		<result column = "rn" property = "rn"/>
+  		<result column = "reply_content" property = "replyContent"/>
+  	</resultMap>
+  	
+  	<select id = "findMaxNum">
+  		SELECT MAX(no) FROM inquiry
+  	</select>
+  	
+  	<insert id = "myInquiryWrite" parameterType="com.care.library.user.InquiryDTO">
+  		INSERT INTO inquiry (no, title, content, id, write_date, reply) VALUES (#{no}, #{title}, #{content}, #{id}, #{writeDate}, 'N')
+  	</insert>
+  	
+  	<select id = "selectInquiry" resultMap="inquiryDto">
+		SELECT BBB.* FROM (SELECT ROWNUM() as rn, AAA.* FROM(SELECT * FROM inquiry WHERE id = #{id} ORDER BY no DESC)AAA)BBB WHERE BBB.rn BETWEEN #{begin} AND #{end}
+  	</select>
+  	
+  	<select id = "selectInquiryTitle" resultMap="inquiryDto">
+		SELECT CCC.* FROM (SELECT BBB.* FROM (SELECT ROWNUM() as rn, AAA.* FROM(SELECT * FROM inquiry WHERE id = #{id} ORDER BY no DESC)AAA)BBB WHERE BBB.rn BETWEEN #{begin} AND #{end})CCC WHERE title like '%'||#{search}||'%'
+  	</select>
+  	
+  	<select id = "selectInquiryReply" resultMap="inquiryDto">
+		SELECT CCC.* FROM (SELECT BBB.* FROM (SELECT ROWNUM() as rn, AAA.* FROM(SELECT * FROM inquiry WHERE id = #{id} ORDER BY no DESC)AAA)BBB WHERE BBB.rn BETWEEN #{begin} AND #{end})CCC WHERE reply = #{replySelect}
+  	</select>
+  	
+  	<select id = "count">
+  		SELECT count(no) FROM inquiry WHERE id = #{id}
+  	</select>
+
+  	<select id = "countReply">
+  		SELECT count(no) FROM inquiry WHERE id = #{id} AND reply = #{replySelect}
+  	</select>
+  	
+  	<select id = "selectMyInquiry" resultMap="inquiryDto">
+  		SELECT BBB.* FROM (SELECT ROWNUM() as rn, AAA.* FROM (SELECT * FROM inquiry WHERE id = #{id} ORDER BY no DESC)AAA)BBB WHERE rn = #{rn}
+  	</select>
+  	
+  	<update id = "updateMyInquiry" parameterType="com.care.library.user.InquiryDTO">
+  		UPDATE inquiry SET title = #{title}, content = #{content} WHERE no = #{no}
+  	</update>
+  	
+	<delete id = "deleteMyInquiry">
+		DELETE inquiry WHERE no = #{no}
+	</delete>
+	
+	<select id="findAdmin">
+		SELECT id FROM member WHERE status = 'M'
+	</select>
+  	
+</mapper>
+
+
+
+
+
+
+
+  

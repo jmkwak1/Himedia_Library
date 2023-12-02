@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link href="/css/main.css" rel="stylesheet" type="text/css">
-<link href="/css/footer.css" rel="stylesheet" type="text/css">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:url var="context" value="/"/>
+<link href="${context }css/main.css" rel="stylesheet" type="text/css">
+<link href="${context }css/footer.css" rel="stylesheet" type="text/css">
 <div id = "wrap" class = "footer">
 	<div class = "inner">
 		<div class = "left">
-			<a href = "main"><img src = "/image/LOGO.png"></a>
+			<a href = "main"><img src = "${context }image/LOGO.png"></a>
 		</div>
 		<div class = "ri">
 			<ul>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.care.library.common.NotifyMapper">
+	<resultMap type="com.care.library.common.NotifyDTO" id="notifyDto"> <!-- id는 식별자일뿐 -->
+  	</resultMap>
+  	
+  	<insert id = "insert" parameterType="com.care.library.common.NotifyDTO">
+  		INSERT INTO notify(no, id, category, title, url) VALUES (#{no}, #{id}, #{category}, #{title}, #{url})
+  	</insert>
+  	
+  	<select id = "findMaxNum">
+  		SELECT MAX(no) FROM notify
+  	</select>
+  	
+  	<select id = "selectAll" resultMap="notifyDto">
+  		SELECT * FROM notify WHERE id = #{id} ORDER BY no DESC
+	</select>
+	
+	<resultMap type="com.care.library.member.MemberDTO" id="memberDto">
+  		<result column = "pro_name" property = "proName"/>
+  		<result column = "reg_date" property = "regDate"/>
+  		<result column = "post_code" property = "postCode"/>
+  		<result column = "auth_date" property = "authDate"/>
+  	</resultMap>
+  	
+  	<select id = "findAdmin">
+  		SELECT * FROM member WHERE status = 'M'
+  	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+  
