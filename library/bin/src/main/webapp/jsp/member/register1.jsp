@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <link href="/css/main.css" rel="stylesheet" type="text/css">
-	<link href="/css/container.css" rel="stylesheet" type="text/css">
+    <c:url var="context" value="/"/>
+    <link href="${context }css/main.css" rel="stylesheet" type="text/css">
+	<link href="${context }css/container.css" rel="stylesheet" type="text/css">
+	<c:import url = "/header"/>
+	<script src = "${context }dbLibrary.js"></script>
 <title>하이디미어 도서관 - 회원가입</title>
 <style>
 .regProcess span.active {background-color:#338cfa; color:#fff;}
 </style>
-<c:import url = "/header"/>
 <div class="RegisterContainer inner mb_30" >
 	<c:import url = "/subMenuLogin"/>
 	<div class="loginContent">
@@ -26,7 +28,7 @@
 				<span>가입완료</span>
 			</div>
 		</div>
-		<form class="form" action = "register2" method="post" id ="f" name="form">
+		<form class="form" method="post" id ="f" name="form">
 			<h3>이용약관</h3>
 			<div class="agreement">
 				<div>
@@ -115,7 +117,6 @@
 						② 하이미디어 도서관은 서비스에 게시된 내용을 사전통지된 지 3일 이후 편집, 이동, 삭제할 수 있는 권리를 가집니다. <br>
 						③ 하이미디어 도서관은 게시된 내용이 일정기간 이상 경과되어, 게시물로써의 효력을 상실하여 그 존치 목적이 불분명한 경우 공지사항 발표 후 1주일 간의 통지기간을 거쳐 해당 게시물을 삭제할 수 있습니다. <br>
 						④ 하이미디어 도서관은 게시물 등에 대하여 제3자로부터 명예훼손, 지적재산권 등의 권리 침해를 이유로 게시중단 요청을 받은 경우 이를 임시로 게시중단(또는 전송중단) 할 수 있으며, 이에 대한 소송, 합의 기타 관련기관의 결정이 이루어져 통보되면 이 결정에 따릅니다. <br>
-						⑤ 해당 게시물 등에 대해 임시로 게시가 중단된 경우, 게시물을 등록한 회원은 재 게시(전송 재개)를 도서관에 요구할 수 있으며, 게시 중단일로부터 3개월 내에 재 게시를 요청하지 아니한 경우 도서관은 이를 삭제할 수 있습니다. <br>
 						<br>
 						제12조 (게시물의 저작권) <br>
 						① 회원이 서비스 내에 게시한 게시물의 저작권은 회원에게 있으며, 하이미디어 도서관은 저작권법에 규정하는 공정한 관행에 합치되는 합리적인 범위 내에서 회원의 별도 허락없이 회원이 등록한 게시물을 다음과 같이 활용할 수 있습니다.<br>
@@ -205,7 +206,7 @@
 			</div>
 				<div class="checks noline">
 					<div>
-						<input type="checkbox" id="chk1" name="chk1" value="true" required onclick="agreementCheck()">
+						<input type="checkbox" id="chk1" name="chk1" value="true">
 						<label for="chk1"><strong>(*필수)</strong> 이용약관에 동의합니다.</label>
 					</div>
 				</div>
@@ -246,7 +247,7 @@
 				</div>
 					<div class="checks noline">
 						<div>
-							<input type="checkbox" id="chk2" name="chk2" value="true" required onclick="agreementCheck()">
+							<input type="checkbox" id="chk2" name="chk2" value="true">
 							<label for="chk2"><strong>(*필수)</strong> 개인정보 수집ㆍ이용에 동의합니다.</label>
 						</div>
 					</div>
@@ -265,13 +266,13 @@
 				</div>
 					<div class="checks noline">
 						<div>
-							<input type="checkbox" id="chk3" name="chk3" value="true" required onclick="agreementCheck()">
+							<input type="checkbox" id="chk3" name="chk3" value="true">
 							<label for="chk3"><strong>(*필수)</strong> 제3자 정보 제공에 대한 안내에 동의합니다.</label>
 						</div>
 					</div>
 				<div class="reg_button">
-					<script src="/dbLibrary.js"></script>
-					<input type = "submit" value = "확인" onclick="agreementCheck();">
+					<script src="${context }dbLibrary.js"></script>
+					<input type = "button" value = "확인" onclick="agreementCheck()">
 					<input type = "button" value = "취소" onclick="location.href='main'">
 				</div>
 		</form>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.library.search.SearchMapper">
+	<resultMap type="com.care.library.search.BookDTO"
+		id="bookDto"> <!-- id는 식별자일뿐 -->
+		<result column="publication_year" property="publicationYear" />
+		<result column="rest_vol" property="restVol" />
+	</resultMap>
+
+	<select id = "findMaxNum">
+  		SELECT MAX(total_id) FROM totalBook
+  	</select>
+  	
+	<!-- 검색 전 모든 책 보여주기 -->
+	<select id="getTotal" resultMap="bookDto">
+		<!-- SELECT A.* FROM (SELECT * FROM totalBook ORDER BY total_id ASC)A WHERE A.total_id BETWEEN #{begin} AND #{end} -->
+		SELECT B.* FROM (SELECT ROWNUM as rn, A.* FROM (SELECT * FROM totalBook ORDER BY total_id ASC)A)B WHERE rn BETWEEN #{begin} AND #{end}
+	</select>
+
+
+	<insert id="popularInsert"
+		parameterType="com.care.library.search.BookDTO">
+		INSERT INTO popularBook (ranking, publication_year, bookName, authors, publisher, bookImageURL, vol, isbn)
+		VALUES(#{ranking}, #{publicationYear},#{bookName}, #{authors}, #{publisher},
+		#{bookImageURL}, #{vol, jdbcType=VARCHAR}, #{isbn})
+	</insert>
+
+	<insert id="recentInsert"
+		parameterType="com.care.library.search.BookDTO">
+		INSERT INTO recentBook (bookName,authors, publisher, bookImageURL, publication_year, vol, isbn)
+		VALUES(#{bookName}, #{authors}, #{publisher}, #{bookImageURL}, #{publicationYear}, #{vol,
+		jdbcType=VARCHAR}, #{isbn})
+	</insert>
+
+	<insert id="insertTotal"
+		parameterType="com.care.library.search.BookDTO">
+		INSERT INTO totalBook (bookName, authors, publisher,
+		bookImageURL, publication_year ,vol, isbn, rest_vol) VALUES(#{bookName},#{authors},
+		#{publisher}, #{bookImageURL}, #{publicationYear, jdbcType=VARCHAR}, #{vol,
+		jdbcType=VARCHAR}, #{isbn}, #{vol, jdbcType=VARCHAR})
+	</insert>
+
+	<delete id="deleteData">
+		<if test="whichTable == 'popularBook'">
+			DELETE FROM popularBook
+		</if>
+		<if test="whichTable == 'recentBook'">
+			DELETE FROM recentBook
+		</if>
+		<if test="whichTable == 'totalBook'">
+			DELETE FROM totalBook
+		</if>
+	</delete>
+
+	<select id="getBookImages">
+		<if test="whichTable == 'popularBook'">
+			<!-- SELECT bookImageURL FROM popularBook WHERE no <![CDATA[ <= ]]> 5 -->
+			SELECT bookImageURL FROM (SELECT bookImageURL, ROWNUM AS rn FROM
+			popularBook ORDER BY TO_NUMBER(ranking) ASC)A WHERE A.rn <![CDATA[ <= ]]>
+			5
+		</if>
+		<if test="whichTable == 'recentBook'">
+			SELECT bookImageURL FROM recentBook
+		</if>
+	</select>
+	
+	<select id="getBookInfo" resultMap="bookDto">
+		<if test="whichTable == 'popularBook'">
+			<!-- SELECT bookImageURL FROM popularBook WHERE no <![CDATA[ <= ]]> 5 -->
+			SELECT bookImageURL,isbn FROM (SELECT bookImageURL, isbn, ROWNUM AS rn FROM popularBook ORDER BY TO_NUMBER(ranking) ASC)A WHERE A.rn <![CDATA[ <= ]]>
+			5
+		</if>
+		<if test="whichTable == 'recentBook'">
+			SELECT bookImageURL,isbn FROM recentBook
+		</if>
+	</select>
+
+	<!-- 대여하기 -->
+	<!-- 관리자 테이블에 들어가야겠지 -->
+
+	<select id="checkTotalDB">
+		SELECT COUNT(*) FROM totalBook
+	</select>
+
+	<select id="checkSearchCount">
+		SELECT COUNT(A.id) FROM (SELECT total_id AS id FROM totalBook WHERE
+		LOWER(bookName) LIKE LOWER('%'||#{search}||'%'))A
+	</select>
+
+	<select id="getTable" resultMap="bookDto">
+		<if test="whichTable == 'popularBook'">
+			<!-- SELECT bookImageURL FROM popularBook WHERE no <![CDATA[ <= ]]> 5 -->
+			SELECT * FROM popularBook
+		</if>
+		<if test="whichTable == 'recentBook'">
+			SELECT * FROM recentBook
+		</if>
+	</select>
+
+	<!--통합검색 -->
+	<select id="totalSearch" resultMap="bookDto">
+  		SELECT BBB.* FROM(SELECT ROWNUM as rn, AAA.* FROM(SELECT * FROM totalBook WHERE LOWER(bookName) LIKE LOWER('%'||#{search}||'%') ORDER BY total_id ASC)AAA)BBB WHERE rn BETWEEN #{begin} AND #{end}
+	</select>
+	
+	
+	<resultMap type="com.care.library.search.BookLoanDTO" id="bookLoanDto"> <!-- id는 식별자일뿐 -->
+		<result column="loan_id" property="loanId" />
+		<result column="user_id" property="userId" />
+		<result column="start_date" property="startDate" />
+		<result column="end_date" property="endDate" />
+		<result column="reserve_date" property="reserveDate" />
+	</resultMap>
+	
+	<!-- 대출 신청(예약) -->
+	<insert id="insertLoan" parameterType="com.care.library.search.BookLoanDTO">
+		INSERT INTO bookLoan (user_id, bookName, isbn, status, reserve_date) 
+		values(#{userId}, #{bookName}, #{isbn}, 'R', #{reserveDate})
+	</insert>
+	
+	<!-- 대출 예약 취소 -->
+	<delete id ="reserveCancel">
+		DELETE bookLoan WHERE loan_id = #{loanId}
+	</delete>
+	
+	<!-- 알림을 위해 관리자 찾기 -->
+	<select id = "findAdmin" resultType = "com.care.library.member.MemberDTO">
+		SELECT * FROM member WHERE status = 'M'
+	</select>
+	
+	<!-- isbn으로 대출한 책 권수 찾기 -->
+	<select id="checkRestVol">
+		SELECT rest_vol FROM totalBook WHERE isbn=#{isbn}
+	</select>
+	
+  	<select id="getMyBookStatus" resultMap="bookLoanDto">
+	    SELECT * FROM bookLoan 
+	    WHERE user_id = #{userId} AND (status='R' OR status='L' OR status='O' OR status='LE')
+	    ORDER BY loan_id DESC
+	</select>
+	
+	<select id="getMyLoanHistory" resultMap="bookLoanDto">
+	    SELECT * FROM bookLoan WHERE user_id = #{userId}
+	</select>
+	
+	<!-- 대출 연장하기 -->
+	<update id="updateLoanStatus">
+  		UPDATE bookLoan SET status = 'LE', end_date=#{newEndDate} WHERE user_id= #{id} AND isbn = #{isbn}
+  	</update>
+		
+</mapper>
+
+
+
+
+
+
+
+  

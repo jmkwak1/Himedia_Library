@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.care.library.info.InfoMapper">
+  	<resultMap type="com.care.library.info.NoticeDTO" id="noticeDto">
+  		<result column = "file_name" property = "fileName"/>
+  		<result column = "image_name" property = "imageName"/>
+  		<result column = "write_date" property = "writeDate"/>
+  	</resultMap>
+
+  	<resultMap type="com.care.library.info.FreeDTO" id="freeDto">
+  		<result column = "write_date" property = "writeDate"/>
+  	</resultMap>
+
+  	<resultMap type="com.care.library.info.ReplyDTO" id="replyDto">
+  		<result column = "write_date" property = "writeDate"/>
+  		<result column = "free_no" property = "freeNo"/>
+  	</resultMap>
+  	
+  	<select id = "findMaxNum">
+  		SELECT MAX(no) FROM notice
+  	</select>
+  	
+  	<insert id = "writeNotice">
+  		INSERT INTO notice (no, title, content, file_name, writer, write_date, hits, image_name) VALUES (#{no}, #{title}, #{content}, #{fileName}, #{writer}, #{writeDate}, #{hits}, #{imageName})
+  	</insert>
+  	
+  	<select id = "selectAllNotice" resultMap="noticeDto">
+  		SELECT AAA.* FROM (SELECT rownum as rn, notice.* FROM notice ORDER BY no DESC)AAA WHERE AAA.rn BETWEEN #{begin} AND #{end}
+  	</select>
+  	
+  	<select id = "count">
+  		SELECT count(no) FROM notice
+  	</select>
+  	
+  	<select id="selectNotice" resultMap="noticeDto">
+  		<if test="select == 'title'">
+	  		SELECT BBB.* FROM(SELECT rownum as rn, AAA.* FROM(SELECT * FROM notice WHERE ${select} like '%'||#{search}||'%' ORDER BY no ASC)AAA)BBB WHERE rn BETWEEN #{begin} AND #{end}
+  		</if>
+  		<if test="select == 'no'">
+	  		SELECT BBB.* FROM(SELECT rownum as rn, AAA.* FROM(SELECT * FROM notice WHERE ${select} = #{search} ORDER BY no ASC)AAA)BBB WHERE rn BETWEEN #{begin} AND #{end}
+  		</if>
+  	</select>
+  	
+  	<select id="selectNoticeContent" resultMap="noticeDto">
+  		SELECT * FROM notice WHERE no = #{no}
+  	</select>
+  	
+  	<update id="updateNoticeHit">
+  		UPDATE notice SET hits = hits+1 WHERE no = #{no}
+  	</update>
+  	
+  	<delete id="deleteNotice">
+  		DELETE notice WHERE no = #{no}
+  	</delete>
+  	
+  	<update id = "updateNotice">
+  		UPDATE notice SET title = #{title}, content = #{content} WHERE no = #{no}
+  	</update>
+  	
+  	<update id = "updateNoticeFile" parameterType="com.care.library.info.NoticeDTO">
+  		UPDATE notice SET title = #{title}, content = #{content}, file_name = #{fileName} WHERE no = #{no}
+  	</update>
+  	
+  	<select id = "findMaxNumFaq">
+  		SELECT MAX(no) FROM faq
+  	</select>
+  	
+  	<insert id="writeFaq">
+  		INSERT INTO faq (no, category, title, content) VALUES (#{no}, #{category}, #{title}, #{content})
+  	</insert>
+  	
+  	<select id = "selectFaq" resultType = "com.care.library.info.FaqDTO">
+  		SELECT rownum as rn, AAA.* FROM (SELECT * FROM faq WHERE category = #{category})AAA
+  	</select>
+  	
+  	<select id = "selectFaqContent" resultType = "com.care.library.info.FaqDTO">
+  		SELECT * FROM faq WHERE no = #{no}
+  	</select>
+  	
+  	<update id = "updateFaq" parameterType="com.care.library.info.FaqDTO">
+  		UPDATE faq SET category = #{category}, title = #{title}, content = #{content} WHERE no = #{no}
+  	</update>
+  	
+  	<delete id = "deleteFaq">
+  		DELETE faq WHERE no = #{no}
+  	</delete>
+  	
+  	<select id="findMaxNumFree">
+  		SELECT MAX(no) FROM free
+  	</select>
+  	
+  	<insert id ="writeFree">
+  		INSERT INTO free (no, title, content, writer, write_date, hits, replies) VALUES (#{no}, #{title}, #{content}, #{writer}, #{writeDate}, #{hits}, #{replies})
+  	</insert>
+  	
+  	<select id="selectAllFree" resultMap="freeDto">
+  		SELECT BBB.* FROM(SELECT rownum as rn, AAA.* FROM(SELECT * FROM free ORDER BY no DESC)AAA)BBB WHERE rn BETWEEN #{begin} AND #{end}
+  	</select>
+
+  	<select id="selectFree" resultMap="freeDto">
+  		SELECT BBB.* FROM (SELECT rownum as rn, AAA.* FROM (SELECT * FROM free WHERE ${select} like '%'||#{search}||'%' ORDER BY no DESC)AAA)BBB WHERE rn BETWEEN #{begin} AND #{end}
+  	</select>
+  	
+  	<select id="countFreeAll">
+  		SELECT count(no) FROM free
+  	</select>
+  	
+  	<select id="selectFreeContent" resultMap="freeDto">
+  		SELECT * FROM free WHERE no = #{no}
+  	</select>
+  	
+  	<update id="updateFreeHits">
+  		UPDATE free SET hits = hits+1 WHERE no = #{no}
+  	</update>
+  	
+  	<update id="updateFree" parameterType="com.care.library.info.FreeDTO">
+  		UPDATE free SET title = #{title}, content = #{content} WHERE no = #{no}
+  	</update>
+  	
+  	<delete id = "deleteFree">
+  		DELETE free WHERE no = #{no}
+  	</delete>
+  	
+  	<select id="findMaxNumFreeReply">
+  		SELECT MAX(no) FROM reply
+  	</select>
+  	
+  	<insert id="writeFreeReply" parameterType="com.care.library.info.ReplyDTO">
+  		INSERT INTO reply (no, content, writer, write_date, free_no) VALUES (#{no}, #{content}, #{writer}, #{writeDate}, #{freeNo})
+  	</insert>
+  	
+  	<select id="selectNoticeReply" resultMap="replyDto">
+  		SELECT * FROM reply WHERE free_no = #{no} ORDER BY no ASC
+  	</select>
+  	
+  	<select id = "countReply">
+  		SELECT count(no) FROM reply WHERE free_no = #{freeNo} 
+  	</select>
+  	
+  	<update id="updateFreeReply">
+  		UPDATE free SET replies = #{replies} WHERE no = #{freeNo}
+  	</update>
+  	
+  	<delete id = "deleteReply">
+  		DELETE reply WHERE no = #{no}
+  	</delete>
+  	
+  	<delete id = "deleteAllReply">
+  		DELETE reply WHERE free_no = #{no}
+  	</delete>
+  	
+</mapper>
+
+
+
+  

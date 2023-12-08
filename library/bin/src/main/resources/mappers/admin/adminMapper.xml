@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.care.library.admin.AdminMapper">
+	<resultMap type="com.care.library.member.MemberDTO" id="memberDto"> <!-- id는 식별자일뿐 -->
+  		<result column = "pro_name" property = "proName"/>
+  		<result column = "detail_address" property = "detailAddress"/>
+  		<result column = "reg_date" property = "regDate"/>
+  		<result column = "post_code" property = "postCode"/>
+  		<result column = "auth_date" property = "authDate"/>
+  		<result column = "user_group" property = "userGroup"/>
+  	</resultMap>
+  	
+  	<resultMap type="com.care.library.user.InquiryDTO" id="inquiryDto">
+  		<result column = "write_date" property = "writeDate"/>
+  		<result column = "reply_content" property = "replyContent"/>
+  	</resultMap>
+  	
+  	<resultMap type="com.care.library.search.BookLoanDTO" id="bookLoanDto">
+  		<result column = "loan_id" property = "loanId"/>
+  		<result column = "user_id" property = "userId"/>
+  		<result column = "start_date" property = "startDate"/>
+  		<result column = "end_date" property = "endDate"/>
+  		<result column = "reserve_date" property = "reserveDate"/>
+  		<result column = "return_date" property = "returnDate"/>
+  	</resultMap>
+
+  	<resultMap type="com.care.library.search.BookDTO" id="bookDto">
+  		<result column = "total_id" property = "totalId"/>
+  		<result column = "publication_year" property = "publicationYear"/>
+  		<result column = "rest_vol" property = "restVol"/>
+  	</resultMap>
+  	
+  	<select id = "count">
+  		SELECT count(id) FROM member
+  	</select>
+
+  	<select id = "countUser">
+  		SELECT count(id) FROM member WHERE status = #{memberSelect}
+  	</select>
+	
+	<select id = "selectMember" resultMap="memberDto">
+		SELECT BBB.* FROM (SELECT rownum as rn, AAA.* FROM (SELECT * FROM member WHERE status = #{memberSelect} ORDER BY auth_date ASC)AAA)BBB WHERE BBB.rn BETWEEN #{begin} AND #{end}
+	</select>
+	
+	<select id = "selectAllMember" resultMap="memberDto">
+		SELECT BBB.* FROM (SELECT rownum as rn, AAA.* FROM (SELECT * FROM member ORDER BY reg_date ASC)AAA)BBB WHERE BBB.rn BETWEEN #{begin} AND #{end}
+	</select>
+	
+	<select id = "countMember">
+   	 	SELECT COUNT(id) FROM member WHERE ${searchSelect} like '%'||#{search}||'%'
+	</select>
+
+	<select id = "searchMember" resultMap="memberDto">
+	    SELECT BBB.* FROM (SELECT rownum as rn, AAA.* FROM (SELECT * FROM member WHERE ${searchSelect} like '%'||#{search}||'%' ORDER BY reg_date ASC)AAA)BBB WHERE BBB.rn BETWEEN #{begin} AND #{end}
+	</select>
+	
+	<select id ="countMemberDiv">
+	    SELECT count(id) FROM member WHERE status = #{memberSelect} AND ${searchSelect} LIKE '%'||#{search}||'%'
+	</select>
+	
+	<select id="searchMemberDiv" resultMap="memberDto">
+	    SELECT BBB.* FROM (SELECT rownum as rn, AAA.* FROM (SELECT * FROM member WHERE status = #{memberSelect} AND ${searchSelect} LIKE '%'||#{search}||'%' ORDER BY reg_date ASC)AAA)BBB WHERE BBB.rn BETWEEN #{begin} AND #{end}
+	</select>
+	
+	<select id = "selectUser" resultMap="memberDto">
+		SELECT * FROM member WHERE id = #{id}
+	</select>
+	
+	<update id = "memberConfirm" parameterType="com.care.library.member.MemberDTO">
+		UPDATE member SET status = 'A', user_group = #{userGroup}, paper = #{paper}, auth_date = #{authDate}, reject = '' WHERE id = #{id}
+	</update>
+	
+	<update id = "memberReject">
+		UPDATE member SET status = 'D', reject = #{reject} WHERE id = #{id}
+	</update>
+	
+	<select id = "searchLoan" resultMap="bookLoanDto">
+		SELECT BBB.* FROM(SELECT rownum as rn, AAA.* FROM (SELECT * FROM bookloan WHERE status = #{loanStatusSelect} ORDER BY loan_id ASC)AAA)BBB WHERE rn BETWEEN #{begin} AND #{end}
+	</select>
+
+	<select id="countLoanStatus">
+		SELECT count(loan_id) FROM bookLoan WHERE status = #{loanStatusSelect}
+	</select>
+
+	<select id = "searchLoanAll" resultMap="bookLoanDto">
+		SELECT BBB.* FROM(SELECT rownum as rn, AAA.* FROM (SELECT * FROM bookloan ORDER BY loan_id ASC)AAA)BBB WHERE rn BETWEEN #{begin} AND #{end}
+	</select>
+	
+	<select id="countLoanAll">
+		SELECT count(loan_id) FROM bookLoan
+	</select>
+	
+	<select id ="countLoanId">
+		SELECT count(loan_id) FROM bookLoan WHERE user_id like '%'||#{search}||'%' 
+	</select>
+	
+	<select id = "selectLoanId" resultMap="bookLoanDto">
+		SELECT BBB.* FROM(SELECT rownum as rn, AAA.* FROM (SELECT * FROM bookLoan WHERE user_id like '%'||#{search}||'%' ORDER BY loan_id DESC)AAA)BBB WHERE rn BETWEEN #{begin} AND #{end}
+	</select>
+	
+	<select id ="countLoanTitle">
+		SELECT count(loan_id) FROM bookLoan WHERE bookName like '%'||#{search}||'%' 
+	</select>
+
+	<select id = "selectLoanTitle" resultMap="bookLoanDto">
+		SELECT BBB.* FROM(SELECT rownum as rn, AAA.* FROM (SELECT * FROM bookLoan WHERE bookName like '%'||#{search}||'%' ORDER BY loan_id DESC)AAA)BBB WHERE rn BETWEEN #{begin} AND #{end}
+	</select>
+
+	<select id="loanRegisterSelect" resultMap="bookLoanDto">
+		SELECT * FROM bookLoan WHERE loan_id = #{loanId}
+	</select>
+	
+	<select id = "loanBookDetail" resultMap="bookDto">
+		SELECT * FROM totalBook WHERE isbn = #{isbn}
+	</select>
+	
+	<select id = "selectAllBook" resultMap="bookDto">
+		SELECT * FROM totalBook
+	</select>
+	
+	<select id = "selectBookTitle" resultMap="bookDto">
+		SELECT * FROM totalBook WHERE bookname like '%'||#{book}||'%' 
+	</select>
+
+	<select id = "selectBookIsbn" resultMap="bookDto">
+		SELECT * FROM totalBook WHERE isbn like '%'||#{book}||'%' 
+	</select>
+	
+	<update id="loanRegister">
+		UPDATE bookLoan SET start_date = #{startDate}, end_date = #{endDate}, status = 'L', reserve_date = '' WHERE loan_id = #{loanId}
+	</update>
+	
+	<update id="updateRestVol">
+  		UPDATE totalBook SET rest_vol = rest_vol - 1 WHERE isbn = #{isbn}
+  	</update>
+  	
+  	<update id = "bookReturn">
+		UPDATE bookLoan SET status = 'C', return_date = #{returnDate} WHERE loan_id = #{loanId}
+  	</update>
+
+  	<update id = "updateRestVolReturn">
+		UPDATE totalBook SET rest_vol = rest_vol + 1 WHERE isbn = #{isbn}
+  	</update>
+
+	<select id="countInquiry">
+		SELECT count(no) FROM inquiry
+	</select>
+	
+	<select id="selectInquiry" resultMap="inquiryDto">
+		SELECT BBB.* FROM (SELECT rownum as rn, AAA.* FROM(SELECT * FROM inquiry ORDER BY no DESC)AAA)BBB WHERE BBB.rn BETWEEN #{begin} AND #{end}
+	</select>
+
+	<select id="countInquiryReply">
+		SELECT count(no) FROM inquiry WHERE reply = #{replySelect}
+	</select>
+
+	<select id="selectInquiryReply" resultMap="inquiryDto">
+		SELECT BBB.* FROM(SELECT rownum as rn, AAA.* FROM (SELECT * FROM inquiry WHERE reply = #{replySelect} ORDER BY no DESC)AAA)BBB WHERE BBB.rn BETWEEN #{begin} AND #{end}
+	</select>
+
+	<select id="countInquiryTitle">
+		SELECT count(no) FROM inquiry WHERE title like '%'||#{search}||'%'
+	</select>
+
+	<select id="selectInquiryTitle">
+		SELECT BBB.* FROM (SELECT rownum as rn, AAA.* FROM (SELECT * FROM inquiry WHERE title like '%'||#{search}||'%' ORDER BY no DESC)AAA)BBB WHERE BBB.rn BETWEEN #{begin} AND #{end}
+	</select>
+
+	<select id="countInquiryWriter">
+		SELECT count(no) FROM inquiry WHERE id like '%'||#{search}||'%'
+	</select>
+	
+	<select id="selectInquiryWriter">
+		SELECT BBB.* FROM (SELECT rownum as rn, AAA.* FROM (SELECT * FROM inquiry WHERE id like '%'||#{search}||'%' ORDER BY no DESC)AAA)BBB WHERE BBB.rn BETWEEN #{begin} AND #{end}
+	</select>
+
+	<select id="selectInquiryContent" resultMap="inquiryDto">
+		SELECT * FROM inquiry WHERE no=#{no}
+	</select>
+
+	<update id ="replyWrite">
+		UPDATE inquiry SET reply_content = #{content}, reply = 'Y' WHERE no = #{no}
+	</update>
+</mapper>
+
+
+
+  

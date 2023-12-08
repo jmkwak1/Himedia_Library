@@ -7,7 +7,13 @@
 	<resultMap type="com.care.library.member.MemberDTO" id="memberDto"> <!-- id는 식별자일뿐 -->
   		<result column = "pro_name" property = "proName"/>
   		<result column = "reg_date" property = "regDate"/>
+  		<result column = "post_code" property = "postCode"/>
+  		<result column = "auth_date" property = "authDate"/>
   	</resultMap>
+	
+	<select id="getNameById">
+		SELECT name FROM member WHERE id = #{id}
+	</select>
 	
 	<select id="loginProc" resultMap="memberDto">
 		SELECT * FROM member WHERE id = #{id}
@@ -17,18 +23,52 @@
 		SELECT * FROM member WHERE kakaoID = #{id}
 	</select>
 	
+	<select id="idCheck" resultMap="memberDto"> <!-- loginProc이랑 똑같긴함 -->
+		SELECT id FROM member WHERE id=#{id}
+	</select>
+	
+	<!-- 카카오 로그인시, 기존 회원의 이메일과 비교 -->
 	<select id="emailCheck" resultMap="memberDto">
 		SELECT * FROM member WHERE email = #{email}
 	</select>
 	
+	<!-- 카카오 연동 회원가입 -->
 	<insert id="kakaoRegisterProc" parameterType="com.care.library.member.MemberDTO">
-		INSERT INTO member (id, pw, name, birth, address, mobile, status, kakaoid)
-		VALUES (#{id}, #{pw}, #{name}, #{birth}, #{address}, #{mobile}, #{status}, #{kakaoid})
+		INSERT INTO member (id, pw, name, birth, email, address, mobile, pro_name, status, detail_address, post_code, kakaoid, reg_date)
+		VALUES (#{id}, #{pw}, #{name}, #{birth}, #{email}, #{address}, #{mobile}, #{proName}, #{status}, #{detailAddress}, #{postCode}, #{kakaoid}, #{regDate})
 	</insert>
 	
+	<!-- 일반 회원 가입 -->
+	<insert id="registerProc" parameterType="com.care.library.member.MemberDTO">
+		INSERT INTO member (id, pw, name, birth, email, address, mobile, pro_name, status, detail_address, post_code, reg_date)
+		VALUES(#{id}, #{pw}, #{name}, #{birth}, #{email}, #{address}, #{mobile}, #{proName}, #{status}, #{detailAddress}, #{postCode}, #{regDate})
+	</insert>
+	
+	<!-- 기존 일반 회원에 카카오 로그인 연동 -->
+	<update id="updateKakaoId">
+		UPDATE member SET kakaoid = #{kakaoID} WHERE email = #{kakaoEmail}
+	</update>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="changePw">
+		UPDATE member SET pw = #{cryptPassword} WHERE id = #{authId}
+	</update>
+	
+	<!-- 회원탈퇴 (게시글 및 리뷰 보존을 위해 아이디를 난수로 변경, 기타 개인정보는 null) -->
+	<update id = "updateId">
+		UPDATE member SET id = #{delId}, name = '', pro_name = '', birth = '', email = '', post_code = '', address = '', detail_address = '', mobile = '', reg_date='', status = 'W', kakaoid='' WHERE id = #{id}
+	</update>
+	
+	<!--  마이 라이브러리 회원정보 수정  -->
+	<select id="getMyInfo" resultMap="memberDto">
+		SELECT * FROM member WHERE id = #{id}
+	</select>
+	
+	<update id="changeMyInfo">
+		UPDATE member SET pw = #{cryptPassword} WHERE id = #{authId}
+	</update>
 	
 	
-
 </mapper>
 
 

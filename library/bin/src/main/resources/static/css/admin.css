@@ -1,0 +1,256 @@
+@charset "UTF-8";
+
+.adminContainer {display:flex; margin-top:70px !important; }
+h1{margin-bottom:50px;}
+.checked{font-weight: 600;}
+
+.adminMemberContainer {width:1000px;}
+
+.adminContent{padding:50px 0 0 50px; width:1000px; min-height:600px;}
+
+.subMenu_member{border-bottom:2px solid #ddd; margin-top:45px;}
+.subMenu_member ul{display:table; border:1px solid #ddd; border-bottom:none;}
+.subMenu_member ul li{display:table-cell; width:150px; height:40px; line-height:40px; text-align:center; border-right:1px solid #ddd;}
+.subMenu_member ul li:last-child{border-right:none;}
+
+.subMenu_member ul li.active{background-color:#338cfa; color:#fff; cursor:pointer;}
+
+.subMenu_member ul li:hover{background-color:#338cfa; color:#fff; cursor:pointer;}
+
+/*회원관리 - 조회조건*/
+.contentBox{font-size:0; padding:30px 0; text-align:center;}
+
+.condition{display:inline-block; font-size:16px; width:100%; text-align:center; margin-bottom:40px;}
+.condition label{font-weight:500; margin-right:10px;}
+.condition select{width:100px; height:30px; margin-right:30px; appearance: auto; -webkit-appearance: auto;}
+.condition input[type="text"]{width:150px; height:30px; margin-right:30px;}
+.condition input[type="button"]{width:50px; height:27px; line-height:27px; font-size:15px;}
+
+.selectMember{width:100%;}
+.selectMember tr:first-child{border-bottom:2px solid #555;}
+.selectMember tr th{padding:5px;}
+.selectMember tr td{padding:5px; text-align:center; border-bottom:1px solid #ddd;}
+
+/*회원관리 - 목록*/
+.contentBox .memberPage{margin-top:20px;}
+.contentBox .memberPage a{text-align:center; display:inline-block; width:30px; height:30px; line-height:30px; font-weight:400; border:1px solid #ddd; margin-right:5px; font-size:15px; padding:0}
+.contentBox .memberPage a:last-child{margin-right:0;}
+
+.selectMember tr:hover {color:blue; cursor:pointer;}
+.selectMember tr:first-child:hover {color:#000; cursor:default;}
+
+/*회원관리 - 상세화면*/
+.memberContainer{text-align:center; border-top:1px solid #ddd;}
+
+.memberDetail{width:100%; margin:40px 0;}
+.memberDetail tr{border-bottom:1px solid #ddd; height:45px;}
+.memberDetail tr:last-child{border-bottom:none;}
+.memberDetail th{border-right:2px solid #555; width:160px;}
+.memberDetail tr td{padding:10px; padding-left:20px;}
+.memberDetail tr td .userGroup {width:150px; margin-right:10px; appearance: auto; -webkit-appearance: auto;}
+.memberDetail tr td .paper {width:210px; appearance: auto; -webkit-appearance: auto;}
+.memberDetail tr td select {height:25px;}
+.deputyChk2 {margin:0 10px;}
+.deputyChk3 {margin-right: 10px;}
+.guardianPaper {width:150px; appearance: auto; -webkit-appearance: auto;}
+
+/*체크박스..*/
+.deputy{position:relative;}
+.deputy input[type="checkbox"]{
+    /*실제 체크박스 숨기기*/
+    position:absolute;
+    width:1px;
+	height:1px;
+	padding:0;
+	margin:-1px;
+	overflow:hidden;
+	border:0;
+	clip:rect(0,0,0,0);/*x,y,z값-이미지의 일부만 보이게 하는 태그*/
+}
+
+.deputy input[type="checkbox"] + label{
+	    display:inline-block;
+		position:relative;
+		cursor:pointer;
+		user-select:none;/*브라우저에서 드래그나 더블 클릭으로 텍스트 선택 불가*/
+	}
+.deputy input[type="checkbox"] + label::before{
+    display:inline-block;
+	content:"";
+	width:24px;
+	height:24px;
+	line-height:20px;
+	text-align:center;
+	vertical-align:middle;
+	border:1px solid #ededed;
+	background:#fafafa;
+	border-radius:3px;
+	margin:-2 8px 0 0;
+	box-shadow:0 1px 2px rgba(0,0,0,0.05), inset 0 -15px 10px -12px rgba(0,0,0,0.05);
+	/*inset 요소 안쪽 그림자*/
+}
+
+.deputy label{font-size:16px; line-height:20px;}
+
+.deputy input[type="checkbox"] + label{
+    display:inline-block;
+	position:relative;
+	text-align:right;
+	cursor:pointer;
+	user-select:none;/*브라우저에서 드래그나 더블 클릭으로 텍스트 선택 불가*/
+}
+.deputy input[type="checkbox"] + label::before{
+    content:"";
+	display:inline-block;
+	width:20px; /*체크박스크기*/
+	height:20px;
+	line-height:20px;
+	text-align:center;
+	vertical-align:middle;
+    background:#fafafa;
+	border:1px solid #ededed;
+	border-radius:3px;
+	margin:-2px 8px 0 0;
+    box-shadow:0 1px 2px rgba(0,0,0,0.05), inset 0 -15px 10px -12px rgba(0,0,0,0.05);
+	/*inset 요소 안쪽 그림자*/
+}
+
+.deputy.noline input[type="checkbox"] + label{
+	    padding-left:30px;
+	}
+	
+.deputy.noline input[type="checkbox"] + label::before{
+    position:absolute;
+	left:0;
+	top:0;
+	margin-top:0;
+	opacity:0.6;
+	box-shadow:0;
+	border-color:#ea226b;
+	transition:all 0.12s, border-color 0.05s;
+}
+.deputy.noline input[type="checkbox"]:checked + label::before{
+    position:absolute;
+	content:"";
+	width:10px;
+	left:5px;
+	top:-5px;
+	border-radius:0;
+	opacity:1;
+	background:transparent;
+	border-color:transparent #ea226b #ea226b transparent;
+	border-top-color:transparent;
+	border-left-color:transparent;
+	transform:rotate(45deg);
+}
+
+/*회원 상세 조회*/
+.memberContainer .memberDetail input[type="text"]:first-child {border:0; height:24.5px; padding:0; font-size:16px; font-weight:normal; color:#14100c}
+.memberContainer .memberDetail input[type="text"].reject {border:1px solid #dcdcdc; padding-left:10px; font-size:14px; height:25px; line-height:25px;}
+
+/*도서관리 - 목록*/
+.subMenu_book{border-bottom:2px solid #ddd; margin-top:45px;}
+.subMenu_book ul{display:table; border:1px solid #ddd; border-bottom:none;}
+.subMenu_book ul li{display:table-cell; width:150px; height:40px; line-height:40px; text-align:center; border-right:1px solid #ddd;}
+.subMenu_book ul li:last-child{border-right:none;}
+
+.subMenu_book ul li.active{background-color:#338cfa; color:#fff; cursor:pointer;}
+
+.subMenu_book ul li:hover{background-color:#338cfa; color:#fff; cursor:pointer;}
+
+.bookContainer {margin-top:0;}
+.bookLoanForm {margin:0;}
+.bookSearch {display:inline-block; margin-top:40px; margin-bottom:20px; text-align:center; width:100%;}
+.bookSearch select {width:80px; height:30px; text-align:center; padding:0; appearance: auto; -webkit-appearance: auto;}
+.bookSearch select.replySelect{margin:0 10px;}
+.bookSearch input[type="text"]{width:200px; height:30px; margin:0 10px;}
+.bookSearch input[type="button"]{width:50px; height:30px;}
+
+.loanBtn {text-align:right;}
+
+.loanPage {margin:40px 0; text-align:center;}
+.bookContainer .loanPage a{display:inline-block; width:30px; height:30px; line-height:30px; font-weight:400; border:1px solid #ddd; margin-right:5px; text-align:center;}
+.bookContainer .loanPage a:last-child{margin-right:0;}
+
+
+/*도서관리 - 대출 등록*/
+.loanRegisterFormContainer {display:flex;}
+.loanRegisterFormContent{padding:50px 0 0 50px; width:1000px; min-height:600px;}
+
+.loanRegisterContainer .loanRegisterForm{width:100%; border-top:2px solid #555; border-bottom:2px solid #555;}
+.loanRegisterContainer .loanRegisterForm tr{border-bottom:1px solid #ddd; max-height:61.5px;}
+.loanRegisterContainer .loanRegisterForm th{padding:10px; border-right:1px solid #ddd;}
+.loanRegisterContainer .loanRegisterForm th.right{border-left:1px solid #ddd;}
+.loanRegisterContainer .loanRegisterForm td{padding:10px; max-height:61.5px;}
+.loanRegisterContainer .loanRegisterForm td input[type="button"].bookBtn{float:right; height:30px;}
+
+.loanRegisterContainer .loanRegisterForm input[type="text"]{height:30px;}
+.loanRegisterContainer .loanRegisterForm input[type="text"].book{height:30px; width:90%}
+.loanRegisterContainer .loanRegisterForm input[type="text"].bookSearch{height:30px; width:90%}
+
+#startDate{width:100px; margin-right:10px;}
+#endDate {width:100px; margin-left:10px;}
+
+.loanBtn{text-align:right; margin:20px 0;}
+
+/*도서관리 - 대출 등록 시 검색*/
+.loanBookList{width:800px;}
+
+/*결제관리 - 목록*/
+.payContainer{text-align:center; border-top:1px solid #ddd;}
+
+.paySearch {display:inline-block; margin-top:40px; margin-bottom:20px;}
+.paySearch select {width:80px; height:30px; text-align:center; padding:0; appearance: auto; -webkit-appearance: auto;}
+.paySearch select.paySelect{margin:0 10px;}
+.paySearch input[type="text"]{width:200px; height:30px; margin:0 10px;}
+.paySearch input[type="button"]{width:50px; height:30px;}
+
+.pay {overflow:hidden; width:100%;}
+.pay tr:first-child{border-bottom:2px solid #555;}
+.pay tr:hover{cursor:pointer; color:blue;}
+.pay tr:first-child:hover{cursor:default; color:#000;}
+.pay tr th{padding:5px;}
+.pay tr td{padding:5px; text-align:center; border-bottom:1px solid #ddd;}
+
+.payPage {margin:40px 0;}
+.payContainer .payPage a{display:inline-block; width:30px; height:30px; line-height:30px; font-weight:400; border:1px solid #ddd; margin-right:5px;}
+.payContainer .payPage a:last-child{margin-right:0;}
+
+/*1:1문의 - 목록*/
+.inquiryContainer{text-align:center; border-top:1px solid #ddd;}
+.inquiry {overflow:hidden; width:100%;}
+.inquiry tr:first-child{border-bottom:2px solid #555;}
+.inquiry tr:hover{cursor:pointer; color:blue;}
+.inquiry tr:first-child:hover{cursor:default; color:#000;}
+.inquiry tr th{padding:5px;}
+.inquiry tr td{padding:5px; text-align:center; border-bottom:1px solid #ddd;}
+
+.inquiryContainer .inquiryBtn{width:100%; text-align:right; margin:20px 0;}
+
+.inquiryPage {margin:40px 0;}
+.inquiryContainer .inquiryPage a{display:inline-block; width:30px; height:30px; line-height:30px; font-weight:400; border:1px solid #ddd; margin-right:5px;}
+.inquiryContainer .inquiryPage a:last-child{margin-right:0;}
+
+.inquirySearch {display:inline-block; margin-top:40px; margin-bottom:20px;}
+.inquirySearch select {width:80px; height:30px; text-align:center; padding:0; appearance: auto; -webkit-appearance: auto;}
+.inquirySearch select.replySelect{margin:0 10px;}
+.inquirySearch input[type="text"]{width:200px; height:30px; margin:0 10px;}
+.inquirySearch input[type="button"]{width:50px; height:30px;}
+
+/*1:1문의 - 내용*/
+.inquiryContainer .inquiryContentForm{width:100%; border-top:2px solid #555; border-bottom:2px solid #555;}
+.inquiryContainer .inquiryContentForm tr{border-bottom:1px solid #ddd;}
+.inquiryContainer .inquiryContentForm th{padding:10px; border-right:1px solid #ddd;}
+.inquiryContainer .inquiryContentForm th.right{border-left:1px solid #ddd;}
+.inquiryContainer .inquiryContentForm td{padding:10px;}
+
+/*열람실 관리*/
+#room_menu li.active a{color:white;}
+#room_menu li a:hover{cursor:pointer; color:white;}
+.selectMember.room{width: 90%;}
+
+.selectMember.room input{ padding: 8px 15px; background-color: #338cfa; border: transparent; 
+color: white; font-size: 15px; border-radius: 5px; cursor: pointer;}
+.selectMember.room input:first-child{margin-right:10px;}
+.contentBox .room{padding:0px;}
+.adminContent .room{padding-top:0px;}

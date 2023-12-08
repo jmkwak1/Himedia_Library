@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.care.library.reservation.ReserveMapper">
+	<resultMap type="com.care.library.reservation.ReserveDTO" id="reserveDTO"> <!-- id는 식별자일뿐 -->
+  		<result column = "seat_id" property = "seatId"/>
+  		<result column = "user_id" property = "userId"/>
+  		<result column = "reserve_date" property = "reserveDate"/>
+  	</resultMap>
+  	
+  	<!-- 열람실 좌석 예약 -->	
+	<insert id = "reservation" parameterType="com.care.library.reservation.ReserveDTO">
+  		INSERT INTO reservation (seat_id, user_id, reserve_date, room) 
+  		VALUES (#{seatId}, #{userId}, #{reserveDate}, #{room})
+  	</insert>
+  	
+  	<!-- 아이디 중복 예약 체크  -->	
+	 <select id="usingUser">
+		SELECT count(seat_id) FROM reservation WHERE user_id = #{userId}
+	</select> 
+  	
+  	<!-- 열람실 별 예약한 좌석수 -->	
+	 <select id="getReservedSeat" resultMap="reserveDTO">
+		SELECT seat_id, user_id FROM reservation WHERE room = #{room}
+	</select> 
+	
+	<!-- 내 좌석 정보 -->	
+	 <select id="getSeatById" resultMap="reserveDTO">
+		SELECT * FROM reservation WHERE user_id = #{id}
+	</select> 
+	
+	<!-- 퇴실하기 -->	
+	 <delete id="DeleteSeatById">
+		DELETE FROM reservation WHERE user_id= #{id}
+	</delete> 
+	
+	<!-- 관리자 열람실 오픈/마감 -->
+	<insert id = "roomStatusChange" >
+  		INSERT INTO reservation (user_id, room_status, seat_id) VALUES (#{id}, #{status} ,'0')
+  	</insert>
+  	
+  	<delete id="roomInit">
+  		DELETE FROM reservation
+  	</delete>
+  	
+  	<insert id = "roomStatusClose" >
+  		UPDATE reservation SET  status = #{status} WHERE id= #{id};
+  	</insert>  	
+  	
+  	 <select id="closeRoomStatus">
+		SELECT count(*) FROM reservation WHERE room_status='C'
+	</select> 
+	
+	<!-- 관리자 열람실 회원 확인 -->
+	 <select id="getAllSeat" resultMap="reserveDTO">
+		SELECT * FROM reservation
+	</select>
+  	
+</mapper>
+
+
+
+
+
+
+
+  

@@ -1,0 +1,121 @@
+.homeContainer{margin-top: 152px;}
+.homeContainer::before{position: absolute; top: 0; left: 0; content: ""; display: inline-block;
+    height: 647px; 
+    width: 100%; 
+    margin: 0 auto;
+    min-width: 1200px;
+    background: url('/image/visual_main2.jpg')no-repeat fixed 50% 40%;
+    background-size: cover;
+    opacity: 0.3;
+}
+.homeContainer .visual{background-color: rgba(0,0,0,0.7);}
+.homeContainer .visual .inner, 
+.homeContainer .condition .inner{display: flex; justify-content: space-between}
+.homeContainer .visual{position: relative; z-index: 1;}
+
+.homeContainer .visual .content.left, 
+.homeContainer .visual .content.right{width: 48%; height: 400px; margin:0; }
+
+.homeContainer .condition {
+    padding: 30px 0 80px 0;
+}
+.condition .schedule,
+.condition .readingRoom{width: 30%; height: 300px; }
+
+/*메인화면 공지사항 관련*/
+.condition .notice{width:30%; height:300px;}
+.noticeTitle {width:100px; height:30px; line-height:30px; font-weight:600; text-align:center; background-color:#338cfa;color:#fff; border-top-left-radius:10px; border-top-right-radius:10px;}
+.noticeList {border-top:2px solid #338cfa; padding:10px;}
+.noticeList li {cursor:pointer; height:40px; line-height:40px; font-weight:400;}
+.noticeList li:hover {color:#338cfa;}
+
+/*메인화면 도서관 일정 관련*/
+.condition .schedule {color: black; width:30%; height:300px;}
+.closedNotice {width:100px; height:30px; line-height:30px; font-weight:600; text-align:center; background-color:#338cfa;color:#fff; border-top-left-radius:10px; border-top-right-radius:10px;}
+.closedTitle {font-size: 18px; color: black; margin:10px 0; border-bottom: 1px solid #ddd ; height: 30px;}
+.closedTitle > b {color:blue;}
+.closedDay{display: flex;}
+.closedDay .prevMonth,.closedDay .thisMonth {width: 50%; height: 100%;}
+
+.closedDay .prevMonth > div, .closedDay .thisMonth >div{margin-bottom: 20px;}
+.closedDay ul {display: flex; margin-bottom: 10px;}
+.closedDay ul li{width: 30px; height: 30px; line-height: 30px;text-align: center; 
+background-color: darkorange; border-radius:50%; margin-right: 10px;}
+.closedDay ul li > span{color: white;}
+
+/*메인화면 열람실 현황 관련*/
+.condition .readingRoom{width:30%; height:300px;}
+.readingRoomTitle {width:100px; height:30px; line-height:30px; font-weight:600; text-align:center; background-color:#338cfa;color:#fff; border-top-left-radius:10px; border-top-right-radius:10px;}
+.roomStatus > ul{display: flex; justify-content: space-between; margin-top:20px;}
+.roomStatus > ul > li{width: 106px; height: 114px;text-align: center; cursor: pointer;}
+.roomStatus > ul > li > span{display: inline-block; width: 100%; height: 32px; line-height: 32px; background-color: #338cfa; color: white; 
+ border-top-left-radius: 5px; border-top-right-radius: 5px;}
+.roomStatus > ul > li > div{color: black; background-color: #ddd;height: 75px; line-height: 75px; 
+ border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; font-size: 18px;font-weight: 400;}
+.restSeat {font-size: 16px; color: black; margin:10px 0; border-bottom: 1px solid #ddd ; height: 30px;}
+
+/*책 이미지 가져오기*/
+.visual .content.left .popularBook,
+.visual .content.right .newBook {
+	/*border: 1px solid red;*/
+	height: 50%;
+	padding-top: 50px;
+	color: white;
+	font-weight: 500;
+	font-size: 20px;
+}
+
+.popularBook .bookContainer,
+.newBook .bookContainer {
+	/*border: 1px solid blue;*/
+	display: flex;
+	padding-top: 10px;
+}
+
+.popularBook .bookImageBox,
+.newBook .bookImageBox {
+	margin-right: 20px;
+	width: 130px;
+	height: 180px;
+	cursor:pointer;
+	/*border: 1px solid black;*/
+}
+
+.popularBook .bookImageBox>img,
+.newBook .bookImageBox>img {
+	width: 100%;
+	height: 100%;
+}
+.iconContainer{display: flex; align-items: center;}
+.iconBox{width:50px; height: 50px;}
+.iconBox > img{width:100%;}
+
+
+/* page-loading */
+  #loading {
+  	width: 100%;
+  	height: 100%;
+  	top: 0;
+  	left: 0;
+  	position: fixed;
+  	display: block;
+  	opacity: 0.6;
+  	background: #e4e4e4;
+  	z-index: 99;
+  	text-align: center;
+  }
+
+
+
+  #loading > img {
+  	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	z-index: 100;
+  }
+   #loading > p {
+    	position: absolute;
+    	top: 57%;
+    	left: 43%;
+    	z-index: 101;
+    }
