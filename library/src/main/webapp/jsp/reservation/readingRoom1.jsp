@@ -30,6 +30,7 @@
 	if ("${sessionScope.name}" !== null) {
 		userName = "${sessionScope.name}";
 	}
+	sourceCord test
 </script>
 <body>
 	<div id="customModal" class="modal">
